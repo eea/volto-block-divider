@@ -1,4 +1,4 @@
-import { blocks } from '~/config';
+import { settings, blocks } from '~/config';
 
 export const DividerBlockSchema = () => ({
   title: 'Divider Block',
@@ -7,7 +7,12 @@ export const DividerBlockSchema = () => ({
     {
       id: 'default',
       title: 'Default',
-      fields: ['title', 'style', 'color'],
+      fields: ['title', 'style'],
+    },
+    {
+      id: 'advanced',
+      title: 'Advanced',
+      fields: ['color'],
     },
   ],
 
@@ -19,17 +24,19 @@ export const DividerBlockSchema = () => ({
     },
     style: {
       title: 'Style',
-      choices: blocks.blocksConfig.divider.styles.map((style) => [
+      choices: blocks.blocksConfig.splitter.styles.map((style) => [
         style.id,
         style.title,
       ]),
     },
     color: {
       title: 'Color',
-      choices: [
-        ['primary', 'Primary'],
-        ['secondary', 'Secondary'],
-      ],
+      widget: 'style_simple_color',
+      available_colors: settings.available_colors,
+      // choices: [
+      //   ['primary', 'Primary'],
+      //   ['secondary', 'Secondary'],
+      // ],
     },
   },
 

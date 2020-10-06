@@ -1,10 +1,13 @@
 import rowSVG from '@plone/volto/icons/row.svg';
 import DividerBlockView from './Divider/DividerBlockView';
 import DividerBlockEdit from './Divider/DividerBlockEdit';
+import SimpleColorPicker from './Widgets/SimpleColorPicker';
+
+import './styles.less';
 
 export default (config) => {
-  config.blocks.blocksConfig.divider = {
-    id: 'divider',
+  config.blocks.blocksConfig.splitter = {
+    id: 'splitter',
     title: 'Divider',
     icon: rowSVG,
     group: 'common',
@@ -19,6 +22,11 @@ export default (config) => {
     },
     styles: [
       {
+        id: 'inline',
+        title: 'Inline',
+        cssClass: 'divider-inline',
+      },
+      {
         id: 'dotted',
         title: 'Dotted',
         cssClass: 'divider-dotted',
@@ -30,10 +38,11 @@ export default (config) => {
       },
       {
         id: 'line',
-        title: 'Line',
+        title: 'Short Line',
         cssClass: 'divider-line',
       },
     ],
   };
+  config.widgets.widget.style_simple_color = SimpleColorPicker;
   return config;
 };

@@ -1,14 +1,20 @@
 import React from 'react';
 import cx from 'classnames';
+import { Divider } from 'semantic-ui-react';
+import { blocks } from '~/config';
+
+const getDividerStyle = (name) => {
+  const { styles = [] } = blocks.blocksConfig.splitter;
+  return styles.find(({ id }) => id === name);
+};
 
 const DividerBlockView = (props) => {
-  const { style = 'line', color = 'primary' } = props;
+  const { style, color } = props.data;
+  const styleName = getDividerStyle(style);
   return (
-    <hr
-      className={cx('divider-block', style?.cssClass, {
-        'divider-secondary': color === 'secondary',
-        'divider-primary': color === 'primary',
-      })}
+    <Divider
+      className={cx('divider-block', styleName?.cssClass)}
+      style={{borderTop: '1px solid' + color}}
     />
   );
 };
