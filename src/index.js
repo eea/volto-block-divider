@@ -41,6 +41,11 @@ export default (config) => {
         title: 'Short Line',
         cssClass: 'divider-line',
       },
+      {
+        id: 'simple',
+        title: 'Simple',
+        cssClass: 'divider-simple',
+      },
     ],
   };
   config.widgets.widget.style_simple_color = SimpleColorPicker;
