@@ -9,11 +9,14 @@ const getDividerStyle = (name) => {
 };
 
 const DividerBlockView = (props) => {
-  const { style, color } = props.data;
+  const { style, color, class_name } = props.data;
   const styleName = getDividerStyle(style);
   return (
     <Divider
-      className={cx('divider-block', styleName?.cssClass)}
+      className={cx('divider-block', styleName?.cssClass, {
+        'divider-primary': class_name === 'primary',
+        'divider-secondary': class_name === 'secondary',
+      })}
       style={{borderTop: '1px solid' + color}}
     />
   );

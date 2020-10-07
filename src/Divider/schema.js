@@ -7,7 +7,7 @@ export const DividerBlockSchema = () => ({
     {
       id: 'default',
       title: 'Default',
-      fields: ['title', 'style'],
+      fields: ['title', 'style', 'class_name'],
     },
     {
       id: 'advanced',
@@ -33,11 +33,14 @@ export const DividerBlockSchema = () => ({
       title: 'Color',
       widget: 'style_simple_color',
       available_colors: settings.available_colors,
-      // choices: [
-      //   ['primary', 'Primary'],
-      //   ['secondary', 'Secondary'],
-      // ],
     },
+    class_name: {
+      title: 'Class',
+      choices: [
+        ['primary', 'Primary'],
+        ['secondary', 'Secondary'],
+      ],
+    }
   },
 
   required: [],
