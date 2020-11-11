@@ -40,7 +40,7 @@ export const DividerBlockSchema = () => ({
         ['primary', 'Primary'],
         ['secondary', 'Secondary'],
       ],
-    }
+    },
   },
 
   required: [],
