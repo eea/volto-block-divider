@@ -1,6 +1,8 @@
 # volto-block-divider
-
 [![Releases](https://img.shields.io/github/v/release/eea/volto-block-divider)](https://github.com/eea/volto-block-divider/releases)
+[![Pipeline](https://ci.eionet.europa.eu/buildStatus/icon?job=volto-addons%2Fvolto-block-divider%2Fmaster&subject=master)](https://ci.eionet.europa.eu/view/Github/job/volto-addons/job/volto-block-divider/job/master/display/redirect)
+[![Pipeline](https://ci.eionet.europa.eu/buildStatus/icon?job=volto-addons%2Fvolto-block-divider%2Fdevelop&subject=develop)](https://ci.eionet.europa.eu/view/Github/job/volto-addons/job/volto-block-divider/job/develop/display/redirect)
+
 
 [Volto](https://github.com/plone/volto) add-on
 
