@@ -17,12 +17,14 @@ Demo GIF
 1. Create new volto project if you don't already have one:
 
    ```
-   $ npm install -g @plone/create-volto-app
-   $ create-volto-app my-volto-project
+   $ npm install -g yo @plone/generator-volto
+   $ yo @plone/volto my-volto-project --addon @eeacms/volto-block-divider
+
    $ cd my-volto-project
+   $ yarn add -W @eeacms/volto-block-divider
    ```
 
-1. Update `package.json`:
+1. If you already have a volto project, just update `package.json`:
 
    ```JSON
    "addons": [
@@ -30,7 +32,7 @@ Demo GIF
    ],
 
    "dependencies": {
-       "@eeacms/volto-block-divider": "1.0.0"
+       "@eeacms/volto-block-divider": "^1.0.0"
    }
    ```
 
@@ -44,6 +46,7 @@ Demo GIF
 1. Go to http://localhost:3000
 
 1. Happy editing!
+
 
 ## How to contribute
 
