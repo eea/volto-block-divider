@@ -4,32 +4,18 @@
 
 Before starting make sure your development environment is properly set. See [Volto Developer Documentation](https://docs.voltocms.com/getting-started/install/)
 
-1. Install `mrs.developer`
+1.  Make sure you have installed `yo`, `@plone/generator-volto` and `mrs-developer`
 
-        $ npm install -g mrs.developer
+        $ npm install -g yo
+        $ npm install -g @plone/generator-volto
+        $ npm install -g mrs-developer
 
-1. Install `@plone/create-volto-app`
+1.  Create new volto app
 
-        $ npm install -g @plone/create-volto-app
-
-1. Create new volto app
-
-        $ create-volto-app my-volto-project
+        $ yo @plone/volto my-volto-project --addon @eeacms/volto-block-divider
         $ cd my-volto-project
 
-1. Update `package.json` with the following information:
-
-        {
-            "scripts": {
-                "develop": "missdev --config=jsconfig.json --output=addons"
-            },
-
-            "addons": [
-                "@eeacms/volto-block-divider"
-            ],
-        }
-
-1. Add the following to `mrs.developer.json`:
+1.  Add the following to `mrs.developer.json`:
 
         {
             "volto-block-divider": {
@@ -40,12 +26,12 @@ Before starting make sure your development environment is properly set. See [Vol
             }
         }
 
-1. Install
+1.  Install
 
         $ yarn develop
         $ yarn
 
-1. Start backend
+1.  Start backend
 
         $ docker run -d --name plone -p 8080:8080 -e SITE=Plone plone
 
@@ -55,12 +41,12 @@ Before starting make sure your development environment is properly set. See [Vol
 
     ...you can also check http://localhost:8080/Plone
 
-1. Start frontend
+1.  Start frontend
 
         $ yarn start
 
-1. Go to http://localhost:3000
+1.  Go to http://localhost:3000
 
-1. Happy hacking!
+1.  Happy hacking!
 
         $ cd src/addons/volto-block-divider/
