@@ -17,7 +17,7 @@ const DividerBlockView = (props) => {
         'divider-primary': class_name === 'primary',
         'divider-secondary': class_name === 'secondary',
       })}
-      style={{borderTop: '1px solid' + color}}
+      style={{ borderTop: `1px solid ${color}` }}
     />
   );
 };
