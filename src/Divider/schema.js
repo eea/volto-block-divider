@@ -1,4 +1,4 @@
-import { settings, blocks } from '~/config';
+import config from '@plone/volto/registry';
 
 export const DividerBlockSchema = () => ({
   title: 'Divider Block',
@@ -24,7 +24,7 @@ export const DividerBlockSchema = () => ({
     },
     style: {
       title: 'Style',
-      choices: blocks.blocksConfig.splitter.styles.map((style) => [
+      choices: config.blocks.blocksConfig.splitter.styles.map((style) => [
         style.id,
         style.title,
       ]),
@@ -32,7 +32,7 @@ export const DividerBlockSchema = () => ({
     color: {
       title: 'Color',
       widget: 'style_simple_color',
-      available_colors: settings.available_colors,
+      available_colors: config.settings.available_colors,
     },
     class_name: {
       title: 'Class',

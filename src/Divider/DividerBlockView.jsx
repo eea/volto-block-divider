@@ -1,10 +1,10 @@
 import React from 'react';
 import cx from 'classnames';
 import { Divider } from 'semantic-ui-react';
-import { blocks } from '~/config';
+import config from '@plone/volto/registry';
 
 const getDividerStyle = (name) => {
-  const { styles = [] } = blocks.blocksConfig.splitter;
+  const { styles = [] } = config.blocks.blocksConfig.splitter;
   return styles.find(({ id }) => id === name);
 };
 

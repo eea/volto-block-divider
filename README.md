@@ -32,7 +32,7 @@ Demo GIF
    ],
 
    "dependencies": {
-       "@eeacms/volto-block-divider": "^1.0.0"
+       "@eeacms/volto-block-divider": "^2.0.0"
    }
    ```
 
