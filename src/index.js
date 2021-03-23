@@ -1,4 +1,4 @@
-import rowSVG from '@plone/volto/icons/row.svg';
+import rowSVG from '@plone/volto/icons/divide-horizontal.svg';
 import DividerBlockView from './Divider/DividerBlockView';
 import DividerBlockEdit from './Divider/DividerBlockEdit';
 import SimpleColorPicker from './Widgets/SimpleColorPicker';
