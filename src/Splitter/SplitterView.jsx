@@ -3,14 +3,14 @@ import cx from 'classnames';
 import { Divider } from 'semantic-ui-react';
 import config from '@plone/volto/registry';
 
-const getDividerStyle = (name) => {
+const getStyle = (name) => {
   const { styles = [] } = config.blocks.blocksConfig.splitter;
   return styles.find(({ id }) => id === name);
 };
 
-const DividerBlockView = (props) => {
+const SplitterView = (props) => {
   const { style, color, class_name } = props.data;
-  const styleName = getDividerStyle(style);
+  const styleName = getStyle(style);
   return (
     <Divider
       className={cx('divider-block', styleName?.cssClass, {
@@ -22,4 +22,4 @@ const DividerBlockView = (props) => {
   );
 };
 
-export default DividerBlockView;
+export default SplitterView;

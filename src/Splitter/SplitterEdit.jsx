@@ -3,15 +3,15 @@ import React, { Component } from 'react';
 import { SidebarPortal } from '@plone/volto/components'; // EditBlock
 import InlineForm from '@plone/volto/components/manage/Form/InlineForm';
 
-import { DividerBlockSchema } from './schema';
-import DividerBlockView from './DividerBlockView';
+import { SplitterSchema } from './schema';
+import SplitterView from './SplitterView';
 
-class DividerBlockEdit extends Component {
+class SplitterEdit extends Component {
   render() {
-    const schema = DividerBlockSchema();
+    const schema = SplitterSchema();
     return (
       <>
-        <DividerBlockView data={this.props.data} />
+        <SplitterView data={this.props.data} />
 
         <SidebarPortal selected={this.props.selected}>
           <InlineForm
@@ -31,4 +31,4 @@ class DividerBlockEdit extends Component {
   }
 }
 
-export default DividerBlockEdit;
+export default SplitterEdit;

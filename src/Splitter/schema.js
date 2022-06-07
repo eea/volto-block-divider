@@ -1,7 +1,7 @@
 import config from '@plone/volto/registry';
 
-export const DividerBlockSchema = () => ({
-  title: 'Divider Block',
+export const SplitterSchema = () => ({
+  title: 'Splitter Block (DEPRECATED)',
 
   fieldsets: [
     {
