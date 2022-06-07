@@ -1,9 +1,9 @@
 import rowSVG from '@plone/volto/icons/divide-horizontal.svg';
-import SplitterView from './SplitterView';
-import SplitterEdit from './SplitterEdit';
-import SimpleColorPicker from './Widgets/SimpleColorPicker';
+import SplitterView from './Splitter/SplitterView';
+import SplitterEdit from './Splitter/SplitterEdit';
+import SimpleColorPicker from './Splitter/Widgets/SimpleColorPicker';
 
-import './splitter.less';
+import './Splitter/splitter.less';
 
 export default (config) => {
   config.blocks.blocksConfig.splitter = {

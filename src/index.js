@@ -1,5 +1,8 @@
-import installDeprecatedSplitter from './Splitter';
+import installDeprecatedSplitter from './deprecated';
 
 export default (config) => {
-  return [installDeprecatedSplitter].reduce((acc, apply) => apply(acc), config);
+  // BBB: DEPRECATED Splitter block
+  config = installDeprecatedSplitter(config);
+
+  // Install Divider block
 };
