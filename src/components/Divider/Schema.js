@@ -97,7 +97,7 @@ export const DividerEditSchema = ({ intl }) => ({
     {
       id: 'default',
       title: 'Default',
-      fields: ['title', 'text', 'hidden', 'section', 'short', 'fitted'],
+      fields: ['title', 'text', 'hidden', 'section', 'fitted'],
     },
   ],
 
@@ -120,11 +120,6 @@ export const DividerEditSchema = ({ intl }) => ({
       description: intl.formatMessage(messages.SectionHelp),
       type: 'boolean',
     },
-    short: {
-      title: intl.formatMessage(messages.Short),
-      description: intl.formatMessage(messages.ShortHelp),
-      type: 'boolean',
-    },
     fitted: {
       title: intl.formatMessage(messages.Fitted),
       description: intl.formatMessage(messages.FittedHelp),
@@ -141,7 +136,7 @@ export const DividerStylingSchema = ({ intl }) => ({
     {
       id: 'default',
       title: 'Default',
-      fields: ['theme', 'inverted'],
+      fields: ['theme', 'inverted', 'short'],
     },
   ],
   properties: {
@@ -158,6 +153,11 @@ export const DividerStylingSchema = ({ intl }) => ({
     inverted: {
       title: intl.formatMessage(messages.Inverted),
       description: intl.formatMessage(messages.InvertedHelp),
+      type: 'boolean',
+    },
+    short: {
+      title: intl.formatMessage(messages.Short),
+      description: intl.formatMessage(messages.ShortHelp),
       type: 'boolean',
     },
   },

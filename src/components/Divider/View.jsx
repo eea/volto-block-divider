@@ -7,7 +7,7 @@ const View = ({ data }) => (
     hidden={data.hidden}
     section={data.section}
     fitted={data.fitted}
-    className={cx(data.styles?.theme, data.short ? 'short' : '')}
+    className={cx(data.styles?.theme, data.styles?.short ? 'short' : '')}
     horizontal={data.text}
     inverted={data.styles?.inverted}
   >
