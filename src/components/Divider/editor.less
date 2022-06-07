@@ -1,0 +1,28 @@
+@type: 'extra';
+@element: 'custom';
+
+@import (multiple, reference, optional) '../../theme.config';
+
+@borderColor: rgba(120, 192, 215, 0.75);
+
+.block-editor-dividerBlock {
+  fieldset {
+    padding: 0;
+    border: none;
+
+    legend {
+      position: absolute;
+      z-index: 3;
+      top: -1.3em;
+      left: 0;
+      width: fit-content;
+      padding: 0 1rem;
+      margin-right: auto;
+      margin-left: auto;
+      background-color: @pageBackground;
+      color: @borderColor;
+      cursor: pointer;
+      text-align: center;
+    }
+  }
+}
