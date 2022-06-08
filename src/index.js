@@ -1,53 +1,33 @@
-import rowSVG from '@plone/volto/icons/divide-horizontal.svg';
-import DividerBlockView from './Divider/DividerBlockView';
-import DividerBlockEdit from './Divider/DividerBlockEdit';
-import SimpleColorPicker from './Widgets/SimpleColorPicker';
-
-import './styles.less';
+import installDeprecatedSplitter from './deprecated';
+import iconSVG from '@plone/volto/icons/divide-horizontal.svg';
+import {
+  DividerEditSchema,
+  DividerStylingSchema,
+  DividerView,
+  DividerEdit,
+} from '@eeacms/volto-block-divider/components';
 
 export default (config) => {
-  config.blocks.blocksConfig.splitter = {
-    id: 'splitter',
+  // Install Divider block
+  config.blocks.blocksConfig.dividerBlock = {
+    id: 'dividerBlock',
     title: 'Divider',
-    icon: rowSVG,
+    icon: iconSVG,
     group: 'common',
-    view: DividerBlockView,
-    edit: DividerBlockEdit,
+    view: DividerView,
+    edit: DividerEdit,
+    editSchema: DividerEditSchema,
+    stylesSchema: DividerStylingSchema,
     restricted: false,
     mostUsed: false,
     sidebarTab: 1,
+    enableStyling: true,
     security: {
       addPermission: [],
       view: [],
     },
-    styles: [
-      {
-        id: 'inline',
-        title: 'Inline',
-        cssClass: 'divider-inline',
-      },
-      {
-        id: 'dotted',
-        title: 'Dotted',
-        cssClass: 'divider-dotted',
-      },
-      {
-        id: 'wideLine',
-        title: 'Wide line',
-        cssClass: 'divider-wide-line',
-      },
-      {
-        id: 'line',
-        title: 'Short Line',
-        cssClass: 'divider-line',
-      },
-      {
-        id: 'simple',
-        title: 'Simple',
-        cssClass: 'divider-simple',
-      },
-    ],
   };
-  config.widgets.widget.style_simple_color = SimpleColorPicker;
-  return config;
+
+  // BBB: DEPRECATED Splitter block
+  return installDeprecatedSplitter(config);
 };
