@@ -1,0 +1,118 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language: \n"
+"Language-Team: \n"
+"Content-Type: \n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#: components/Divider/Schema
+# defaultMessage: A divider can be fitted, without any space above or below it.
+msgid "A divider can be fitted, without any space above or below it."
+msgstr ""
+
+#: components/Divider/Schema
+# defaultMessage: A divider can have its colors inverted.
+msgid "A divider can have its colors inverted."
+msgstr ""
+
+#: components/Divider/Schema
+# defaultMessage: A divider can provide greater margins to divide sections of content.
+msgid "A divider can provide greater margins to divide sections of content."
+msgstr ""
+
+#: components/Divider/Schema
+# defaultMessage: A hidden divider divides content without creating a dividing line.
+msgid "A hidden divider divides content without creating a dividing line."
+msgstr ""
+
+#: components/Divider/Schema
+# defaultMessage: Default
+msgid "Default"
+msgstr ""
+
+#: components/Divider/Edit
+#: components/Divider/Schema
+# defaultMessage: Divider
+msgid "Divider"
+msgstr ""
+
+#: components/Divider/Schema
+# defaultMessage: Divider friendly name
+msgid "Divider friendly name"
+msgstr ""
+
+#: components/Divider/Schema
+# defaultMessage: Divider theme
+msgid "Divider theme"
+msgstr ""
+
+#: components/Divider/Schema
+# defaultMessage: Fitted
+msgid "Fitted"
+msgstr ""
+
+#: components/Divider/Schema
+# defaultMessage: Hidden
+msgid "Hidden"
+msgstr ""
+
+#: components/Divider/Schema
+# defaultMessage: Inverted
+msgid "Inverted"
+msgstr ""
+
+#: components/Divider/Schema
+# defaultMessage: Primary
+msgid "Primary"
+msgstr ""
+
+#: components/Divider/Schema
+# defaultMessage: Secondary
+msgid "Secondary"
+msgstr ""
+
+#: components/Divider/Schema
+# defaultMessage: Section
+msgid "Section"
+msgstr ""
+
+#: components/Divider/Schema
+# defaultMessage: Short
+msgid "Short"
+msgstr ""
+
+#: components/Divider/Schema
+# defaultMessage: Shorter line
+msgid "Shorter line"
+msgstr ""
+
+#: components/Divider/Schema
+# defaultMessage: Tertiary
+msgid "Tertiary"
+msgstr ""
+
+#: components/Divider/Schema
+# defaultMessage: Text
+msgid "Text"
+msgstr ""
+
+#: components/Divider/Schema
+# defaultMessage: Text on top of the divider
+msgid "Text on top of the divider"
+msgstr ""
+
+#: components/Divider/Schema
+# defaultMessage: Theme
+msgid "Theme"
+msgstr ""
+
+#: components/Divider/Schema
+# defaultMessage: Title
+msgid "Title"
+msgstr ""
