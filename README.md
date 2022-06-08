@@ -21,7 +21,7 @@
 
 ###
 
-![Divider](https://github.com/eea/volto-divider-block/raw/develop/docs/divider.gif)
+![Divider](https://github.com/eea/volto-block-divider/raw/develop/docs/divider.gif)
 
 ## Getting started
 
