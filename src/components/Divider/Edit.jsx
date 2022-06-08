@@ -3,7 +3,7 @@ import { SidebarPortal, BlockDataForm } from '@plone/volto/components';
 import { defineMessages } from 'react-intl';
 import { DividerEditSchema } from './Schema';
 import View from './View';
-import './editor.less';
+import './divider.less';
 
 const messages = defineMessages({
   Type: {
@@ -12,7 +12,7 @@ const messages = defineMessages({
   },
 });
 
-const Edit = (props) => {
+export default (props) => {
   const { data, block, onChangeBlock, selected, intl } = props;
   const schema = DividerEditSchema({ intl });
   return (
@@ -41,5 +41,3 @@ const Edit = (props) => {
     </>
   );
 };
-
-export default Edit;
