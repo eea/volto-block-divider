@@ -9,7 +9,7 @@ export default ({ data }) => (
     section={data.section}
     fitted={data.fitted}
     className={cx(data.styles?.theme, data.short ? 'short' : '')}
-    horizontal={data.text}
+    horizontal={!!data.text}
     inverted={data.styles?.inverted}
   >
     {data.text ? <div>{data.text}</div> : ''}
