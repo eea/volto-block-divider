@@ -20,7 +20,7 @@ describe('Blocks Tests', () => {
     // Add block
     cy.get('.ui.basic.icon.button.block-add-button').first().click();
     cy.get('.blocks-chooser .title').contains('Common').click();
-    cy.get('.ui.basic.icon.button.splitter').contains('Divider').click();
+    cy.get('.ui.basic.icon.button.dividerBlock').contains('Divider').click();
 
     // Save
     cy.get('#toolbar-save').click();
