@@ -64,10 +64,6 @@ const messages = defineMessages({
     id: 'Divider theme',
     defaultMessage: 'Divider theme',
   },
-  ThemeDefault: {
-    id: 'Default',
-    defaultMessage: 'Default',
-  },
   ThemePrimary: {
     id: 'Primary',
     defaultMessage: 'Primary',
@@ -149,7 +145,6 @@ export const DividerStylingSchema = ({ intl }) => ({
       title: intl.formatMessage(messages.Theme),
       description: intl.formatMessage(messages.ThemeHelp),
       choices: [
-        ['', intl.formatMessage(messages.ThemeDefault)],
         ['primary', intl.formatMessage(messages.ThemePrimary)],
         ['secondary', intl.formatMessage(messages.ThemeSecondary)],
         ['tertiary', intl.formatMessage(messages.ThemeTertiary)],
