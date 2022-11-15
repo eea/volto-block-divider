@@ -1,4 +1,5 @@
 import { defineMessages } from 'react-intl';
+import { addStyling } from '@plone/volto/helpers';
 
 const messages = defineMessages({
   Type: {
@@ -130,31 +131,36 @@ export const DividerEditSchema = ({ intl }) => ({
   required: [],
 });
 
-export const DividerStylingSchema = ({ intl }) => ({
-  title: intl.formatMessage(messages.Type),
-  block: 'divider',
-  fieldsets: [
-    {
-      id: 'default',
-      title: 'Default',
-      fields: ['theme', 'inverted'],
+export const DividerStylingSchema = (args) => {
+  const schema = addStyling(args);
+  const { intl } = args;
+  schema.properties.styles.schema = {
+    title: intl.formatMessage(messages.Type),
+    block: 'divider',
+    fieldsets: [
+      {
+        id: 'default',
+        title: 'Default',
+        fields: ['theme', 'inverted'],
+      },
+    ],
+    properties: {
+      theme: {
+        title: intl.formatMessage(messages.Theme),
+        description: intl.formatMessage(messages.ThemeHelp),
+        choices: [
+          ['primary', intl.formatMessage(messages.ThemePrimary)],
+          ['secondary', intl.formatMessage(messages.ThemeSecondary)],
+          ['tertiary', intl.formatMessage(messages.ThemeTertiary)],
+        ],
+      },
+      inverted: {
+        title: intl.formatMessage(messages.Inverted),
+        description: intl.formatMessage(messages.InvertedHelp),
+        type: 'boolean',
+      },
     },
-  ],
-  properties: {
-    theme: {
-      title: intl.formatMessage(messages.Theme),
-      description: intl.formatMessage(messages.ThemeHelp),
-      choices: [
-        ['primary', intl.formatMessage(messages.ThemePrimary)],
-        ['secondary', intl.formatMessage(messages.ThemeSecondary)],
-        ['tertiary', intl.formatMessage(messages.ThemeTertiary)],
-      ],
-    },
-    inverted: {
-      title: intl.formatMessage(messages.Inverted),
-      description: intl.formatMessage(messages.InvertedHelp),
-      type: 'boolean',
-    },
-  },
-  required: [],
-});
+    required: [],
+  };
+  return schema;
+};
