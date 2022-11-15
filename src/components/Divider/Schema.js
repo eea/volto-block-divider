@@ -131,9 +131,9 @@ export const DividerEditSchema = ({ intl }) => ({
   required: [],
 });
 
-export const DividerStylingSchema = (args) => {
-  const schema = addStyling(args);
-  const { intl } = args;
+export const DividerStylingSchema = (props) => {
+  const schema = addStyling(props);
+  const { intl } = props;
   schema.properties.styles.schema = {
     title: intl.formatMessage(messages.Type),
     block: 'divider',
