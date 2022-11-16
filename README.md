@@ -19,9 +19,13 @@
 
 ## Features
 
-###
-
 ![Divider](https://github.com/eea/volto-block-divider/raw/develop/docs/divider.gif)
+
+## Upgrade
+
+### Upgrading to 5.x
+
+This version requires: `@plone/volto >= 16.0.0.alpha.46` (schemaEnhancer / addStyling).
 
 ## Getting started
 

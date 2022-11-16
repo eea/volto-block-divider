@@ -17,11 +17,10 @@ export default (config) => {
     view: DividerView,
     edit: DividerEdit,
     editSchema: DividerEditSchema,
-    stylesSchema: DividerStylingSchema,
+    schemaEnhancer: DividerStylingSchema,
     restricted: false,
     mostUsed: false,
     sidebarTab: 1,
-    enableStyling: true,
     security: {
       addPermission: [],
       view: [],
