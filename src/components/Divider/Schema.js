@@ -148,17 +148,15 @@ export const DividerStylingSchema = (props) => {
       theme: {
         title: intl.formatMessage(messages.Theme),
         description: intl.formatMessage(messages.ThemeHelp),
-        widget: 'color_picker',
+        widget: 'theme_picker',
         colors: [
-          { name: 'primary', label: intl.formatMessage(messages.ThemePrimary) },
-          {
-            name: 'secondary',
-            label: intl.formatMessage(messages.ThemeSecondary),
-          },
-          {
-            name: 'tertiary',
-            label: intl.formatMessage(messages.ThemeTertiary),
-          },
+          ...(config.settings && config.settings.themeColors
+            ? config.settings.themeColors.map(({ value, title }) => ({
+                name: value,
+                label: title,
+              }))
+            : []),
+          //and add extra ones here
         ],
       },
       inverted: {
