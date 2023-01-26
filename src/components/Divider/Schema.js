@@ -1,5 +1,7 @@
 import { defineMessages } from 'react-intl';
 import { addStyling } from '@plone/volto/helpers';
+import config from '@plone/volto/registry';
+
 
 const messages = defineMessages({
   Type: {
