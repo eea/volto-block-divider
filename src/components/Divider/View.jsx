@@ -8,7 +8,11 @@ export default ({ data }) => (
     hidden={data.hidden}
     section={data.section}
     fitted={data.fitted}
-    className={cx(data.styles?.theme, data.short ? 'short' : '')}
+    className={cx(
+      data.styles?.theme,
+      data.short ? 'short' : '',
+      data?.spacing ? `divider-spacing-${data?.spacing}` : '',
+    )}
     horizontal={!!data.text}
     inverted={data.styles?.inverted}
   >
