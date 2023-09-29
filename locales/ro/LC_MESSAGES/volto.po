@@ -31,11 +31,6 @@ msgstr ""
 msgid "A hidden divider divides content without creating a dividing line."
 msgstr ""
 
-#: components/Divider/Schema
-# defaultMessage: Default
-msgid "Default"
-msgstr ""
-
 #: components/Divider/Edit
 #: components/Divider/Schema
 # defaultMessage: Divider

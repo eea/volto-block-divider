@@ -19,7 +19,7 @@
 
 ## Features
 
-![Divider](https://github.com/eea/volto-block-divider/raw/develop/docs/divider.gif)
+![Divider](https://github.com/eea/volto-block-divider/raw/master/docs/divider.gif)
 
 ## Upgrade
 
@@ -29,17 +29,26 @@ This version requires: `@plone/volto >= 16.0.0.alpha.46` (schemaEnhancer / addSt
 
 ## Getting started
 
-1. Create new volto project if you don't already have one:
+### Try volto-block-divider with Docker
 
+      git clone https://github.com/eea/volto-block-divider.git
+      cd volto-block-divider
+      make
+      make start
+
+Go to http://localhost:3000
+
+### Add volto-block-divider to your Volto project
+
+1. Make sure you have a [Plone backend](https://plone.org/download) up-and-running at http://localhost:8080/Plone
+
+   ```Bash
+   docker compose up backend
    ```
-   $ npm install -g yo @plone/generator-volto
-   $ yo @plone/volto my-volto-project --addon @eeacms/volto-block-divider
 
-   $ cd my-volto-project
-   $ yarn add -W @eeacms/volto-block-divider
-   ```
+1. Start Volto frontend
 
-1. If you already have a volto project, just update `package.json`:
+* If you already have a volto project, just update `package.json`:
 
    ```JSON
    "addons": [
@@ -47,30 +56,36 @@ This version requires: `@plone/volto >= 16.0.0.alpha.46` (schemaEnhancer / addSt
    ],
 
    "dependencies": {
-       "@eeacms/volto-block-divider": "^2.0.0"
+       "@eeacms/volto-block-divider": "*"
    }
+   ```
+
+* If not, create one:
+
+   ```
+   npm install -g yo @plone/generator-volto
+   yo @plone/volto my-volto-project --canary --addon @eeacms/volto-block-divider
+   cd my-volto-project
    ```
 
 1. Install new add-ons and restart Volto:
 
    ```
-   $ yarn
-   $ yarn start
+   yarn
+   yarn start
    ```
 
 1. Go to http://localhost:3000
 
 1. Happy editing!
 
-
 ## Release
 
 See [RELEASE.md](https://github.com/eea/volto-block-divider/blob/master/RELEASE.md).
 
-
 ## How to contribute
 
-See [DEVELOP.md](https://github.com/eea/volto-block-divider/blob/master/DEVELOP.md2).
+See [DEVELOP.md](https://github.com/eea/volto-block-divider/blob/master/DEVELOP.md).
 
 ## Copyright and license
 
