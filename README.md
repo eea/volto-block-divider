@@ -83,10 +83,9 @@ Go to http://localhost:3000
 
 See [RELEASE.md](https://github.com/eea/volto-block-divider/blob/master/RELEASE.md).
 
-
 ## How to contribute
 
-See [DEVELOP.md](https://github.com/eea/volto-block-divider/blob/master/DEVELOP.md2).
+See [DEVELOP.md](https://github.com/eea/volto-block-divider/blob/master/DEVELOP.md).
 
 ## Copyright and license
 

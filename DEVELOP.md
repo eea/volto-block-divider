@@ -104,8 +104,3 @@ Or run it:
   ```Bash
   make cypress-run
   ```
-Or run it:
-
-  ```Bash
-  make cypress-run
-  ```
