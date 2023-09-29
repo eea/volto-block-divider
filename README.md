@@ -15,11 +15,17 @@
 [![Duplicated Lines (%)](https://sonarqube.eea.europa.eu/api/project_badges/measure?project=volto-block-divider-develop&metric=duplicated_lines_density)](https://sonarqube.eea.europa.eu/dashboard?id=volto-block-divider-develop)
 
 
-[Volto](https://github.com/plone/volto) add-on
+[Volto](https://github.com/plone/volto) Divider Block
 
 ## Features
 
-Demo GIF
+![Divider](https://github.com/eea/volto-block-divider/raw/master/docs/divider.gif)
+
+## Upgrade
+
+### Upgrading to 5.x
+
+This version requires: `@plone/volto >= 16.0.0.alpha.46` (schemaEnhancer / addStyling).
 
 ## Getting started
 
@@ -77,9 +83,10 @@ Go to http://localhost:3000
 
 See [RELEASE.md](https://github.com/eea/volto-block-divider/blob/master/RELEASE.md).
 
+
 ## How to contribute
 
-See [DEVELOP.md](https://github.com/eea/volto-block-divider/blob/master/DEVELOP.md).
+See [DEVELOP.md](https://github.com/eea/volto-block-divider/blob/master/DEVELOP.md2).
 
 ## Copyright and license
 
