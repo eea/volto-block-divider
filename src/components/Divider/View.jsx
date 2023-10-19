@@ -3,7 +3,7 @@ import cx from 'classnames';
 import { Divider } from 'semantic-ui-react';
 import './divider.less';
 
-export default ({ data }) => {
+export default function ViewBlockDivider({ data }) {
   const DividerRender = ({ data }) => (
     <Divider
       hidden={data.hidden}
@@ -28,4 +28,4 @@ export default ({ data }) => {
       )}
     </>
   );
-};
+}

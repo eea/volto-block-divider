@@ -6,7 +6,7 @@ import clearSVG from '@plone/volto/icons/clear.svg';
 import loadable from '@loadable/component';
 const GithubPicker = loadable(() => import('react-color/lib/Github'));
 
-export default (props) => {
+export default function SimpleColorPicker(props) {
   const { id, value, onChange, available_colors } = props;
   const [showPicker, setShowPicker] = React.useState(false);
 
@@ -54,4 +54,4 @@ export default (props) => {
       </div>
     </FormFieldWrapper>
   );
-};
+}
