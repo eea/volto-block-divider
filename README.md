@@ -19,7 +19,7 @@
 
 ## Features
 
-![Divider](https://github.com/eea/volto-block-divider/raw/master/docs/divider.gif)
+![Divider](https://raw.githubusercontent.com/eea/volto-block-divider/master/docs/divider.gif)
 
 ## Upgrade
 

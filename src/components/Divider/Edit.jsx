@@ -12,7 +12,7 @@ const messages = defineMessages({
   },
 });
 
-export default (props) => {
+export default function DividerBlockEdit(props) {
   const { data, block, onChangeBlock, selected, intl } = props;
   const schema = DividerEditSchema({ intl });
   return (
@@ -40,4 +40,4 @@ export default (props) => {
       </SidebarPortal>
     </>
   );
-};
+}
