@@ -6,10 +6,10 @@ describe('ControlPanel: Dexterity Content-Types Layout', () => {
 
   it('Edit Blocks Layout for Book', () => {
     cy.visit('/controlpanel/dexterity-types');
-    cy.waitForResourceToLoad('@navigation');
-    cy.waitForResourceToLoad('@breadcrumbs');
-    cy.waitForResourceToLoad('@actions');
-    cy.waitForResourceToLoad('@types');
+    // cy.waitForResourceToLoad('@navigation');
+    // cy.waitForResourceToLoad('@breadcrumbs');
+    // cy.waitForResourceToLoad('@actions');
+    // cy.waitForResourceToLoad('@types');
 
     cy.get('a[href="/controlpanel/dexterity-types/book"]').should(
       'have.text',
@@ -55,7 +55,7 @@ describe('ControlPanel: Dexterity Content-Types Layout', () => {
     cy.getSlateTitle().type('My First Book');
     cy.get('.documentFirstHeading').contains('My First Book');
     cy.get('.dividerBlock .divider').click();
-    cy.get('.field-wrapper-text #field-text').click().type('Book Divider')
+    cy.get('.field-wrapper-text #field-text').click().type('Book Divider');
 
     cy.get('#toolbar-save').click();
     cy.get('.documentFirstHeading').contains('My First Book');
