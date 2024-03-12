@@ -36,10 +36,6 @@ describe('ControlPanel: Dexterity Content-Types Layout', () => {
     cy.get('#toolbar-save').click();
 
     cy.visit('/cypress');
-    cy.waitForResourceToLoad('@navigation');
-    cy.waitForResourceToLoad('@breadcrumbs');
-    cy.waitForResourceToLoad('@actions');
-    cy.waitForResourceToLoad('@types');
 
     cy.get('button[class="add"]').click();
     cy.get('#toolbar-add-book').click();
