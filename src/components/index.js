@@ -1,4 +1,5 @@
-export DividerEdit from './Divider/Edit';
-export DividerView from './Divider/View';
+import DividerEdit from './Divider/Edit';
+import DividerView from './Divider/View';
 
 export { DividerEditSchema, DividerStylingSchema } from './Divider/Schema';
+export { DividerEdit, DividerView };

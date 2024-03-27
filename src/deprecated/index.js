@@ -5,7 +5,7 @@ import SimpleColorPicker from './Splitter/Widgets/SimpleColorPicker';
 
 import './Splitter/splitter.less';
 
-export default (config) => {
+const applyConfig = (config) => {
   config.blocks.blocksConfig.splitter = {
     id: 'splitter',
     title: 'Splitter',
@@ -51,3 +51,5 @@ export default (config) => {
   config.widgets.widget.style_simple_color = SimpleColorPicker;
   return config;
 };
+
+export default applyConfig;
