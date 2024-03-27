@@ -90,6 +90,11 @@ const messages = defineMessages({
     id: 'Spacing',
     defaultMessage: 'Spacing',
   },
+  SpacingHelp: {
+    id: 'spacing-help',
+    defaultMessage:
+      'Use this option with the Hidden option to add spacing between blocks.',
+  },
 });
 
 export const DividerEditSchema = ({ intl }) => ({
@@ -142,6 +147,7 @@ export const DividerEditSchema = ({ intl }) => ({
     },
     spacing: {
       title: intl.formatMessage(messages.Spacing),
+      description: intl.formatMessage(messages.SpacingHelp),
       widget: 'image_size',
       default: 's',
     },
