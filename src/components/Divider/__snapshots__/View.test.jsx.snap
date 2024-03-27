@@ -1,0 +1,119 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`View should render the component 1`] = `
+<div
+  className="styled-dividerBlock"
+>
+  <div
+    className="ui divider"
+  >
+    
+  </div>
+</div>
+`;
+
+exports[`View should render the component with all props with no theme 1`] = `
+<div
+  className="styled-dividerBlock"
+>
+  <div
+    className="ui fitted hidden horizontal inverted divider"
+  >
+    <div>
+      test test
+    </div>
+  </div>
+</div>
+`;
+
+exports[`View should render the component with all props with theme 1`] = `
+<div
+  className="ui fitted hidden horizontal inverted divider test"
+>
+  <div>
+    test test
+  </div>
+</div>
+`;
+
+exports[`View should render the component with prop fitted 1`] = `
+<div
+  className="styled-dividerBlock"
+>
+  <div
+    className="ui fitted divider"
+  >
+    
+  </div>
+</div>
+`;
+
+exports[`View should render the component with prop hidden 1`] = `
+<div
+  className="styled-dividerBlock"
+>
+  <div
+    className="ui hidden divider"
+  >
+    
+  </div>
+</div>
+`;
+
+exports[`View should render the component with prop section 1`] = `
+<div
+  className="styled-dividerBlock"
+>
+  <div
+    className="ui section divider"
+  >
+    
+  </div>
+</div>
+`;
+
+exports[`View should render the component with prop styles with theme 1`] = `
+<div
+  className="ui inverted divider test"
+>
+  
+</div>
+`;
+
+exports[`View should render the component with prop styles, with no theme 1`] = `
+<div
+  className="styled-dividerBlock"
+>
+  <div
+    className="ui inverted divider"
+  >
+    
+  </div>
+</div>
+`;
+
+exports[`View should render the component with prop text 1`] = `
+<div
+  className="styled-dividerBlock"
+>
+  <div
+    className="ui horizontal divider"
+  >
+    <div>
+      test test
+    </div>
+  </div>
+</div>
+`;
+
+exports[`View should render the component with short 1`] = `
+<div
+  className="styled-dividerBlock"
+>
+  <div
+    className="ui divider short"
+  >
+    
+  </div>
+</div>
+`;

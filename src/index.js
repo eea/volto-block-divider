@@ -7,7 +7,7 @@ import {
   DividerEdit,
 } from '@eeacms/volto-block-divider/components';
 
-const applyConfig = (config) => {
+export default function applyConfig(config) {
   // Install Divider block
   config.blocks.blocksConfig.dividerBlock = {
     id: 'dividerBlock',
@@ -29,6 +29,4 @@ const applyConfig = (config) => {
 
   // BBB: DEPRECATED Splitter block
   return installDeprecatedSplitter(config);
-};
-
-export default applyConfig;
+}
