@@ -23,6 +23,8 @@
   "devDependencies": {
     "@cypress/code-coverage": "^3.10.0",
     "@plone/scripts": "*",
+    "postcss-less": "6.0.0",
+    "razzle-plugin-scss": "4.2.18",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "dotenv": "^16.3.2",
     "husky": "^8.0.3",
