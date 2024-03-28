@@ -22,7 +22,6 @@ import './commands';
 import '@cypress/code-coverage/support';
 
 export const slateBeforeEach = (contentType = 'Document') => {
-  // cy.intercept('GET', `/**/*?expand*`).as('content');
   cy.autologin();
   cy.createContent({
     contentType: 'Document',
@@ -36,7 +35,6 @@ export const slateBeforeEach = (contentType = 'Document') => {
     path: 'cypress',
   });
   cy.visit('/cypress/my-page');
-  // cy.waitForResourceToLoad('@content');
   cy.waitForResourceToLoad('my-page');
   cy.navigate('/cypress/my-page/edit');
 };
