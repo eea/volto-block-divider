@@ -86,6 +86,15 @@ const messages = defineMessages({
     id: 'A divider can have its colors inverted.',
     defaultMessage: 'A divider can have its colors inverted.',
   },
+  Spacing: {
+    id: 'Spacing',
+    defaultMessage: 'Spacing',
+  },
+  SpacingHelp: {
+    id: 'spacing-help',
+    defaultMessage:
+      'Use this option with the Hidden option to add spacing between blocks.',
+  },
 });
 
 export const DividerEditSchema = ({ intl }) => ({
@@ -95,7 +104,15 @@ export const DividerEditSchema = ({ intl }) => ({
     {
       id: 'default',
       title: 'Default',
-      fields: ['title', 'text', 'hidden', 'section', 'fitted', 'short'],
+      fields: [
+        'title',
+        'text',
+        'hidden',
+        'section',
+        'fitted',
+        'short',
+        'spacing',
+      ],
     },
   ],
 
@@ -127,6 +144,12 @@ export const DividerEditSchema = ({ intl }) => ({
       title: intl.formatMessage(messages.Short),
       description: intl.formatMessage(messages.ShortHelp),
       type: 'boolean',
+    },
+    spacing: {
+      title: intl.formatMessage(messages.Spacing),
+      description: intl.formatMessage(messages.SpacingHelp),
+      widget: 'image_size',
+      default: 's',
     },
   },
   required: [],
