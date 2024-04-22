@@ -47,7 +47,7 @@ describe('ControlPanel: Dexterity Content-Types Layout', () => {
     cy.getSlateTitle().type('My First Book');
     cy.get('.documentFirstHeading').contains('My First Book');
     cy.get('.dividerBlock .divider').click();
-    cy.get('.field-wrapper-text #field-text').click().type('Book Divider')
+    cy.get('.field-wrapper-text #field-text').click().type('Book Divider');
 
     cy.get('#toolbar-save').click();
     cy.get('.documentFirstHeading').contains('My First Book');
