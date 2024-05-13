@@ -17,7 +17,7 @@
     "url": "git@github.com:eea/volto-block-divider.git"
   },
   "dependencies": {
-    "@eeacms/volto-widget-theme-picker": "^1.0.1",
+    "@eeacms/volto-widget-theme-picker": "*",
     "react-color": "~2.18.1"
   },
   "devDependencies": {
