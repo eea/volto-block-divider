@@ -11,103 +11,113 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
 
+#. Default: "A divider can be fitted, without any space above or below it."
 #: components/Divider/Schema
-# defaultMessage: A divider can be fitted, without any space above or below it.
 msgid "A divider can be fitted, without any space above or below it."
-msgstr ""
+msgstr "Eine Trennlinie kann so eingebaut werden, dass darüber oder darunter kein Platz ist"
 
+#. Default: "A divider can have its colors inverted."
 #: components/Divider/Schema
-# defaultMessage: A divider can have its colors inverted.
 msgid "A divider can have its colors inverted."
-msgstr ""
+msgstr "Die Farben einer Trennlinie können umgekehrt werden."
 
+#. Default: "A divider can provide greater margins to divide sections of content."
 #: components/Divider/Schema
-# defaultMessage: A divider can provide greater margins to divide sections of content.
 msgid "A divider can provide greater margins to divide sections of content."
-msgstr ""
+msgstr "Eine Trennlinie kann größere Abstände zur Unterteilung von Abschnitten des Inhalts bieten."
 
+#. Default: "A hidden divider divides content without creating a dividing line."
 #: components/Divider/Schema
-# defaultMessage: A hidden divider divides content without creating a dividing line.
 msgid "A hidden divider divides content without creating a dividing line."
-msgstr ""
+msgstr "Eine verdeckte Trennlinie unterteilt den Inhalt, ohne eine Trennlinie zu erzeugen."
 
+#. Default: "Divider"
 #: components/Divider/Edit
 #: components/Divider/Schema
-# defaultMessage: Divider
 msgid "Divider"
-msgstr ""
+msgstr "Trennlinie"
 
+#. Default: "Divider friendly name"
 #: components/Divider/Schema
-# defaultMessage: Divider friendly name
 msgid "Divider friendly name"
-msgstr ""
+msgstr "Trennlinie kurzname"
 
+#. Default: "Divider theme"
 #: components/Divider/Schema
-# defaultMessage: Divider theme
 msgid "Divider theme"
-msgstr ""
+msgstr "Trennlinie Theme"
 
+#. Default: "Fitted"
 #: components/Divider/Schema
-# defaultMessage: Fitted
 msgid "Fitted"
-msgstr ""
+msgstr "Angepasst"
 
+#. Default: "Hidden"
 #: components/Divider/Schema
-# defaultMessage: Hidden
 msgid "Hidden"
-msgstr ""
+msgstr "Ausgeblendet"
 
+#. Default: "Inverted"
 #: components/Divider/Schema
-# defaultMessage: Inverted
 msgid "Inverted"
-msgstr ""
+msgstr "Umgekehrt"
 
+#. Default: "Primary"
 #: components/Divider/Schema
-# defaultMessage: Primary
 msgid "Primary"
-msgstr ""
+msgstr "Primär"
 
+#. Default: "Secondary"
 #: components/Divider/Schema
-# defaultMessage: Secondary
 msgid "Secondary"
-msgstr ""
+msgstr "Sekundär"
 
+#. Default: "Section"
 #: components/Divider/Schema
-# defaultMessage: Section
 msgid "Section"
-msgstr ""
+msgstr "Abschnitt"
 
+#. Default: "Short"
 #: components/Divider/Schema
-# defaultMessage: Short
 msgid "Short"
-msgstr ""
+msgstr "Kurz"
 
+#. Default: "Shorter line"
 #: components/Divider/Schema
-# defaultMessage: Shorter line
 msgid "Shorter line"
-msgstr ""
+msgstr "Kürzere Linie"
 
+#. Default: "Spacing"
 #: components/Divider/Schema
-# defaultMessage: Tertiary
+msgid "Spacing"
+msgstr "Abstand"
+
+#. Default: "Tertiary"
+#: components/Divider/Schema
 msgid "Tertiary"
-msgstr ""
+msgstr "Tertiär"
 
+#. Default: "Text"
 #: components/Divider/Schema
-# defaultMessage: Text
 msgid "Text"
 msgstr ""
 
+#. Default: "Text on top of the divider"
 #: components/Divider/Schema
-# defaultMessage: Text on top of the divider
 msgid "Text on top of the divider"
-msgstr ""
+msgstr "Text oben auf der Trennlinie"
 
+#. Default: "Theme"
 #: components/Divider/Schema
-# defaultMessage: Theme
 msgid "Theme"
 msgstr ""
 
+#. Default: "Title"
 #: components/Divider/Schema
-# defaultMessage: Title
 msgid "Title"
-msgstr ""
+msgstr "Titel"
+
+#. Default: "Use this option with the Hidden option to add spacing between blocks."
+#: components/Divider/Schema
+msgid "spacing-help"
+msgstr "Verwenden Sie diese Option zusammen mit der Option ausgeblendet, um Abstände zwischen den Blöcken hinzuzufügen."
