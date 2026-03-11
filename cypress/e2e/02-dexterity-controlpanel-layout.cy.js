@@ -17,6 +17,7 @@ describe('ControlPanel: Dexterity Content-Types Layout', () => {
       'Can not edit Layout for book',
     );
     cy.get('#page-controlpanel-layout button').click();
+    cy.get('#sidebar .formtabs').contains('Settings').click();
 
     // Wait a bit for draftjs to load, without this the title block
     // custom placeholder is missing and cypress gives a timeout error
