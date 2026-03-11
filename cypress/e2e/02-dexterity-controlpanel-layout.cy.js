@@ -21,7 +21,7 @@ describe('ControlPanel: Dexterity Content-Types Layout', () => {
     // Wait a bit for draftjs to load, without this the title block
     // custom placeholder is missing and cypress gives a timeout error
     cy.wait(1000);
-    cy.get('input[id="field-placeholder"]').type('Book title');
+    cy.get('input[id="field-placeholder"]:visible').first().type('Book title');
     cy.get('label[for="field-required"]').click();
     cy.get('label[for="field-fixed"]').click();
 
@@ -32,7 +32,10 @@ describe('ControlPanel: Dexterity Content-Types Layout', () => {
     cy.get('.content.active.common .button.dividerBlock')
       .contains('Divider')
       .click({ force: true });
-    cy.get('.help .input #field-placeholder').click().type('Book divider');
+    cy.get('.help .input #field-placeholder:visible')
+      .first()
+      .click()
+      .type('Book divider');
     cy.get('#toolbar-save').click();
 
     cy.visit('/cypress');
