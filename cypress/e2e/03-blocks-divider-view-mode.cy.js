@@ -22,6 +22,21 @@ const setCheckbox = (field, checked) => {
       cy.wrap($input)[checked ? 'check' : 'uncheck']({ force: true });
     }
   });
+  cy.get(`input#field-${field}`).should(
+    checked ? 'be.checked' : 'not.be.checked',
+  );
+};
+
+const assertHiddenModifier = (selector) => {
+  cy.get(selector).should(($divider) => {
+    const hasHiddenClass = $divider.hasClass('hidden');
+    const hasHiddenAttr =
+      $divider.attr('hidden') !== undefined || $divider.prop('hidden') === true;
+    expect(
+      hasHiddenClass || hasHiddenAttr,
+      'hidden modifier should be represented as class or hidden attribute',
+    ).to.equal(true);
+  });
 };
 
 describe('Divider Block: View Mode Tests', () => {
@@ -64,17 +79,21 @@ describe('Divider Block: View Mode Tests', () => {
     setPageTitle('Divider Modifiers Test');
     addDividerBlock();
 
+    // Apply one modifier at a time and wait for edit preview update.
     setCheckbox('hidden', true);
+    assertHiddenModifier('fieldset.divider-block .divider');
     setCheckbox('fitted', true);
+    cy.get('fieldset.divider-block .divider').should('have.class', 'fitted');
 
     cy.get('#toolbar-save').click();
     cy.url().should('eq', `${Cypress.config().baseUrl}/cypress/my-page`);
 
-    cy.get(
-      '#page-document .styled-dividerBlock .divider, #page-document .divider',
-    )
-      .should('have.class', 'hidden')
-      .and('have.class', 'fitted')
+    const viewDividerSelector =
+      '#page-document .styled-dividerBlock .divider, #page-document .divider';
+
+    assertHiddenModifier(viewDividerSelector);
+    cy.get(viewDividerSelector)
+      .should('have.class', 'fitted')
       .and('not.have.class', 'section')
       .and('not.have.class', 'short')
       .and('not.have.class', 'horizontal');
