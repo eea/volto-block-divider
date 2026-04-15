@@ -16,7 +16,7 @@ const addDividerBlock = () => {
 };
 
 const setCheckbox = (field, checked) => {
-  const checkboxSelector = `.field-wrapper-${field} .ui.checkbox`;
+  const checkboxSelector = `#blockform-fieldset-default .field-wrapper-${field} .ui.checkbox`;
 
   cy.get(checkboxSelector).then(($checkbox) => {
     const isChecked = $checkbox.hasClass('checked');
@@ -82,6 +82,7 @@ describe('Divider Block: View Mode Tests', () => {
   it('renders hidden and fitted divider modifiers in view mode', () => {
     setPageTitle('Divider Modifiers Test');
     addDividerBlock();
+    cy.get('fieldset.divider-block .divider').first().click({ force: true });
 
     // Apply one modifier at a time and wait for edit preview update.
     setCheckbox('hidden', true);
