@@ -16,15 +16,21 @@ const addDividerBlock = () => {
 };
 
 const setCheckbox = (field, checked) => {
-  cy.get(`input#field-${field}`).then(($input) => {
-    const isChecked = $input.prop('checked');
+  const checkboxSelector = `.field-wrapper-${field} .ui.checkbox`;
+  const inputSelector = `input#field-${field}`;
+
+  cy.get(checkboxSelector).then(($checkbox) => {
+    const isChecked = $checkbox.hasClass('checked');
     if (isChecked !== checked) {
-      cy.wrap($input)[checked ? 'check' : 'uncheck']({ force: true });
+      cy.wrap($checkbox).click({ force: true });
     }
   });
-  cy.get(`input#field-${field}`).should(
-    checked ? 'be.checked' : 'not.be.checked',
+
+  cy.get(checkboxSelector).should(
+    checked ? 'have.class' : 'not.have.class',
+    'checked',
   );
+  cy.get(inputSelector).should(checked ? 'be.checked' : 'not.be.checked');
 };
 
 const assertHiddenModifier = (selector) => {
