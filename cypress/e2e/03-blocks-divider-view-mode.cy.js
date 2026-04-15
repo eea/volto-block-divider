@@ -1,110 +1,82 @@
 import { slateBeforeEach, slateAfterEach } from '../support/e2e';
 
+const setPageTitle = (title) => {
+  cy.clearSlateTitle();
+  cy.getSlateTitle().type(title);
+  cy.get('.documentFirstHeading').contains(title);
+};
+
+const addDividerBlock = () => {
+  cy.getSlate().click();
+  cy.get('.ui.basic.icon.button.block-add-button').first().click();
+  cy.get('.blocks-chooser .title').contains('Common').click();
+  cy.get('.content.active.common .button.dividerBlock')
+    .contains('Divider')
+    .click({ force: true });
+};
+
+const setCheckbox = (field, checked) => {
+  cy.get(`input#field-${field}`).then(($input) => {
+    const isChecked = $input.prop('checked');
+    if (isChecked !== checked) {
+      cy.wrap($input)[checked ? 'check' : 'uncheck']({ force: true });
+    }
+  });
+};
+
 describe('Divider Block: View Mode Tests', () => {
   beforeEach(slateBeforeEach);
   afterEach(slateAfterEach);
 
-  it('Divider Block: Add and save divider', () => {
-    cy.clearSlateTitle();
-    cy.getSlateTitle().type('Divider Test');
-    cy.get('.documentFirstHeading').contains('Divider Test');
+  it('persists divider text when edited from view back to edit mode', () => {
+    setPageTitle('Divider Text Test');
+    addDividerBlock();
 
-    cy.getSlate().click();
+    cy.get('.field-wrapper-text #field-text')
+      .click()
+      .type('Initial Divider Text');
 
-    // Add divider block
-    cy.get('.ui.basic.icon.button.block-add-button').first().click();
-    cy.get('.blocks-chooser .title').contains('Common').click();
-    cy.get('.content.active.common .button.dividerBlock')
-      .contains('Divider')
-      .click({ force: true });
-
-    // Save
     cy.get('#toolbar-save').click();
+    cy.url().should('eq', `${Cypress.config().baseUrl}/cypress/my-page`);
 
-    cy.contains('Divider Test');
+    cy.get(
+      '#page-document .styled-dividerBlock .divider, #page-document .divider',
+    )
+      .should('have.class', 'horizontal')
+      .and('contain', 'Initial Divider Text');
+
+    cy.visit('/cypress/my-page/edit');
+    cy.get('fieldset.divider-block .divider').first().click({ force: true });
+    cy.get('.field-wrapper-text #field-text')
+      .clear()
+      .type('Updated Divider Text');
+
+    cy.get('#toolbar-save').click();
+    cy.url().should('eq', `${Cypress.config().baseUrl}/cypress/my-page`);
+
+    cy.get(
+      '#page-document .styled-dividerBlock .divider, #page-document .divider',
+    ).contains('Updated Divider Text');
+    cy.contains('Initial Divider Text').should('not.exist');
   });
 
-  it('Divider Block: Section divider', () => {
-    cy.clearSlateTitle();
-    cy.getSlateTitle().type('Section Divider Test');
+  it('renders hidden and fitted divider modifiers in view mode', () => {
+    setPageTitle('Divider Modifiers Test');
+    addDividerBlock();
 
-    cy.getSlate().click();
+    setCheckbox('hidden', true);
+    setCheckbox('fitted', true);
 
-    // Add divider block
-    cy.get('.ui.basic.icon.button.block-add-button').first().click();
-    cy.get('.blocks-chooser .title').contains('Common').click();
-    cy.get('.content.active.common .button.dividerBlock')
-      .contains('Divider')
-      .click({ force: true });
-
-    // Toggle section checkbox
-    cy.get('.sidebar-container label[for="field-section"]').click();
-
-    // Save
     cy.get('#toolbar-save').click();
-    cy.contains('Section Divider Test');
-  });
+    cy.url().should('eq', `${Cypress.config().baseUrl}/cypress/my-page`);
 
-  it('Divider Block: Short divider', () => {
-    cy.clearSlateTitle();
-    cy.getSlateTitle().type('Short Divider Test');
-
-    cy.getSlate().click();
-
-    // Add divider block
-    cy.get('.ui.basic.icon.button.block-add-button').first().click();
-    cy.get('.blocks-chooser .title').contains('Common').click();
-    cy.get('.content.active.common .button.dividerBlock')
-      .contains('Divider')
-      .click({ force: true });
-
-    // Toggle short checkbox
-    cy.get('.sidebar-container label[for="field-short"]').click();
-
-    // Save
-    cy.get('#toolbar-save').click();
-    cy.contains('Short Divider Test');
-  });
-
-  it('Divider Block: Hidden divider', () => {
-    cy.clearSlateTitle();
-    cy.getSlateTitle().type('Hidden Divider Test');
-
-    cy.getSlate().click();
-
-    // Add divider block
-    cy.get('.ui.basic.icon.button.block-add-button').first().click();
-    cy.get('.blocks-chooser .title').contains('Common').click();
-    cy.get('.content.active.common .button.dividerBlock')
-      .contains('Divider')
-      .click({ force: true });
-
-    // Toggle hidden checkbox
-    cy.get('.sidebar-container label[for="field-hidden"]').click();
-
-    // Save
-    cy.get('#toolbar-save').click();
-    cy.contains('Hidden Divider Test');
-  });
-
-  it('Divider Block: Fitted divider', () => {
-    cy.clearSlateTitle();
-    cy.getSlateTitle().type('Fitted Divider Test');
-
-    cy.getSlate().click();
-
-    // Add divider block
-    cy.get('.ui.basic.icon.button.block-add-button').first().click();
-    cy.get('.blocks-chooser .title').contains('Common').click();
-    cy.get('.content.active.common .button.dividerBlock')
-      .contains('Divider')
-      .click({ force: true });
-
-    // Toggle fitted checkbox
-    cy.get('.sidebar-container label[for="field-fitted"]').click();
-
-    // Save
-    cy.get('#toolbar-save').click();
-    cy.contains('Fitted Divider Test');
+    cy.get(
+      '#page-document .styled-dividerBlock .divider, #page-document .divider',
+    )
+      .should('have.class', 'hidden')
+      .and('have.class', 'fitted')
+      .and('not.have.class', 'section')
+      .and('not.have.class', 'short')
+      .and('not.have.class', 'horizontal');
   });
 });
