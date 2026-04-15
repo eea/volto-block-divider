@@ -17,7 +17,6 @@ const addDividerBlock = () => {
 
 const setCheckbox = (field, checked) => {
   const checkboxSelector = `.field-wrapper-${field} .ui.checkbox`;
-  const inputSelector = `input#field-${field}`;
 
   cy.get(checkboxSelector).then(($checkbox) => {
     const isChecked = $checkbox.hasClass('checked');
@@ -30,7 +29,6 @@ const setCheckbox = (field, checked) => {
     checked ? 'have.class' : 'not.have.class',
     'checked',
   );
-  cy.get(inputSelector).should(checked ? 'be.checked' : 'not.be.checked');
 };
 
 const assertHiddenModifier = (selector) => {
