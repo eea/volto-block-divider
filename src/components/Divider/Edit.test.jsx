@@ -50,27 +50,25 @@ describe('Edit', () => {
     );
     const json = component.toJSON();
     expect(json).toMatchSnapshot();
-    expect(json).toMatchSnapshot();
   });
 
   it('should pass the isEditMode prop to View', () => {
     const component = renderer.create(<Edit {...baseProps} />);
     const json = component.toJSON();
-    // View should be rendered inside fieldset with isEditMode prop
-    const fieldset = json;
-    expect(fieldset.type).toBe('fieldset');
-    // View component should be present as child
-    const viewChild = fieldset.children.find(
-      (child) => child.type === 'div' && child.props.className === 'divider',
-    );
-    expect(viewChild).toBeDefined();
+    const fieldset = json.find(el => el && el.type === 'fieldset');
+    expect(fieldset).toBeDefined();
+    expect(fieldset.props.className).toBe('divider-block');
+    // The legend should contain default title
+    const legend = fieldset.children.find(el => el && el.type === 'legend');
+    expect(legend).toBeDefined();
+    expect(legend.children).toContain('Divider');
   });
 
   it('should render sidebar portal when selected', () => {
     const component = renderer.create(<Edit {...baseProps} selected={true} />);
     const json = component.toJSON();
     const portal = json.find(
-      (child) => child.type === 'div' && child.props.id === 'sidebar-portal',
+      (child) => child && child.type === 'div' && child.props.id === 'sidebar-portal',
     );
     expect(portal).toBeDefined();
   });

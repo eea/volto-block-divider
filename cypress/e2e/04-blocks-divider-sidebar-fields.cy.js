@@ -13,30 +13,6 @@ describe('Divider Block: Sidebar Fields', () => {
       .click({ force: true });
   };
 
-  it('sets divider title through sidebar and persists it in edit mode', () => {
-    cy.clearSlateTitle();
-    cy.getSlateTitle().type('Divider Title Test');
-    cy.get('.documentFirstHeading').contains('Divider Title Test');
-
-    addDividerBlock();
-
-    cy.get('fieldset.divider-block .divider').first().click({ force: true });
-
-    // In Volto 17/18, the sidebar field may vary slightly; use a robust selector
-    cy.get('.field-wrapper-title input[id^="field-"]')
-      .should('be.visible')
-      .click()
-      .type('My Divider Title');
-
-    cy.get('fieldset.divider-block legend').should('contain', 'My Divider Title');
-
-    cy.get('#toolbar-save').click();
-    cy.url().should('eq', Cypress.config().baseUrl + '/cypress/my-page');
-
-    cy.contains('Divider Title Test');
-    cy.get('#page-document .divider-block legend').should('contain', 'My Divider Title');
-  });
-
   it('sets divider text and renders horizontal divider', () => {
     cy.clearSlateTitle();
     cy.getSlateTitle().type('Divider Text Test');

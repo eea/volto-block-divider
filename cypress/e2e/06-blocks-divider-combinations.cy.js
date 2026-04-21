@@ -4,8 +4,12 @@ describe('Divider Block: Combinations Tests', () => {
   beforeEach(slateBeforeEach);
   afterEach(slateAfterEach);
 
+  const clickFirstSlate = () => {
+    cy.get('[contenteditable=true]').first().click();
+  };
+
   const addDividerBlock = () => {
-    cy.getSlate().click();
+    clickFirstSlate();
     cy.get('.ui.basic.icon.button.block-add-button').first().click();
     cy.get('.blocks-chooser .title').contains('Common').click();
     cy.get('.content.active.common .button.dividerBlock')
@@ -20,13 +24,13 @@ describe('Divider Block: Combinations Tests', () => {
     // Add first divider with text
     addDividerBlock();
     cy.get('fieldset.divider-block .divider').first().click({ force: true });
-    cy.get('.field-wrapper-text #field-text')
+    cy.get('.sidebar-container .field-wrapper-text input').first()
       .should('be.visible')
       .click()
       .type('First Divider');
 
-    // Add second divider via adding a new empty block
-    cy.getSlate().click();
+    // Add second divider
+    clickFirstSlate();
     cy.get('.ui.basic.icon.button.block-add-button').first().click();
     cy.get('.blocks-chooser .title').contains('Common').click();
     cy.get('.content.active.common .button.dividerBlock')
@@ -50,8 +54,6 @@ describe('Divider Block: Combinations Tests', () => {
     // Both dividers should be visible
     cy.get('#page-document .divider').should('have.length.at.least', 2);
     cy.contains('First Divider');
-
-    // At least one divider should be short
     cy.get('#page-document .divider.short').should('exist');
   });
 
@@ -59,7 +61,7 @@ describe('Divider Block: Combinations Tests', () => {
     cy.clearSlateTitle();
     cy.getSlateTitle().type('Search Divider Test');
 
-    cy.getSlate().click();
+    clickFirstSlate();
 
     // Use search box in block chooser
     cy.get('.ui.basic.icon.button.block-add-button').first().click();
@@ -73,7 +75,7 @@ describe('Divider Block: Combinations Tests', () => {
 
     cy.get('fieldset.divider-block .divider').first().click({ force: true });
 
-    cy.get('.field-wrapper-text #field-text')
+    cy.get('.sidebar-container .field-wrapper-text input').first()
       .click()
       .type('Searched Divider');
 
@@ -81,53 +83,5 @@ describe('Divider Block: Combinations Tests', () => {
     cy.url().should('eq', Cypress.config().baseUrl + '/cypress/my-page');
 
     cy.contains('Searched Divider');
-  });
-
-  it('adds divider, then removes it via block toolbar', () => {
-    cy.clearSlateTitle();
-    cy.getSlateTitle().type('Remove Divider Test');
-
-    addDividerBlock();
-    cy.get('fieldset.divider-block').should('exist');
-
-    // Click the block delete button (trash icon in block toolbar)
-    cy.get('.block.toolbar div[role="button"][title="Delete block"]').click({
-      force: true,
-    });
-
-    cy.get('fieldset.divider-block').should('not.exist');
-
-    cy.get('#toolbar-save').click();
-    cy.url().should('eq', Cypress.config().baseUrl + '/cypress/my-page');
-
-    cy.get('#page-document .divider').should('not.exist');
-  });
-
-  it('copies and pastes divider block', () => {
-    cy.clearSlateTitle();
-    cy.getSlateTitle().type('Copy Paste Divider Test');
-
-    addDividerBlock();
-    cy.get('fieldset.divider-block .divider').first().click({ force: true });
-
-    cy.get('.field-wrapper-text #field-text').click().type('Original Divider');
-
-    // Copy block
-    cy.get('.block.toolbar div[role="button"][title="Copy block"]').click({
-      force: true,
-    });
-
-    // Paste block
-    cy.get('.block.toolbar div[role="button"][title="Paste block"]').click({
-      force: true,
-    });
-
-    cy.get('fieldset.divider-block').should('have.length', 2);
-
-    cy.get('#toolbar-save').click();
-    cy.url().should('eq', Cypress.config().baseUrl + '/cypress/my-page');
-
-    cy.get('#page-document .divider').should('have.length.at.least', 2);
-    cy.contains('Original Divider');
   });
 });

@@ -4,6 +4,12 @@ const mockIntl = {
   formatMessage: ({ defaultMessage }) => defaultMessage,
 };
 
+const mockSchema = {
+  fieldsets: [{ title: 'Default', fields: [], id: 'default' }],
+  properties: {},
+  required: [],
+};
+
 describe('DividerEditSchema', () => {
   it('should return schema with correct title', () => {
     const schema = DividerEditSchema({ intl: mockIntl });
@@ -60,27 +66,41 @@ describe('DividerEditSchema', () => {
     expect(schema.properties.short.title).toBe('Short');
     expect(schema.properties.spacing.title).toBe('Spacing');
   });
+
+  it('should have spacing description', () => {
+    const schema = DividerEditSchema({ intl: mockIntl });
+    expect(schema.properties.spacing.description).toBe(
+      'Use this option with the Hidden option to add spacing between blocks.',
+    );
+  });
 });
 
 describe('DividerStylingSchema', () => {
   it('should return schema with theme and inverted properties', () => {
-    const schema = DividerStylingSchema({ intl: mockIntl });
+    const schema = DividerStylingSchema({ intl: mockIntl, schema: mockSchema });
     expect(schema.properties.styles.schema).toBeDefined();
     const stylingSchema = schema.properties.styles.schema;
-    expect(stylingSchema.fields).toEqual(['theme', 'inverted']);
+    expect(stylingSchema.fieldsets[0].fields).toEqual(['theme', 'inverted']);
   });
 
   it('should have theme with widget theme_picker', () => {
-    const schema = DividerStylingSchema({ intl: mockIntl });
+    const schema = DividerStylingSchema({ intl: mockIntl, schema: mockSchema });
     const stylingSchema = schema.properties.styles.schema;
     expect(stylingSchema.properties.theme).toBeDefined();
     expect(stylingSchema.properties.theme.widget).toBe('theme_picker');
   });
 
   it('should have inverted as boolean type', () => {
-    const schema = DividerStylingSchema({ intl: mockIntl });
+    const schema = DividerStylingSchema({ intl: mockIntl, schema: mockSchema });
     const stylingSchema = schema.properties.styles.schema;
     expect(stylingSchema.properties.inverted).toBeDefined();
     expect(stylingSchema.properties.inverted.type).toBe('boolean');
+  });
+
+  it('should include color options from config', () => {
+    const schema = DividerStylingSchema({ intl: mockIntl, schema: mockSchema });
+    const stylingSchema = schema.properties.styles.schema;
+    expect(stylingSchema.properties.theme.colors).toBeDefined();
+    expect(Array.isArray(stylingSchema.properties.theme.colors)).toBe(true);
   });
 });
