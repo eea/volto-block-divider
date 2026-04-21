@@ -41,10 +41,10 @@ describe('Edit', () => {
   it('should render the component with default title message', () => {
     const component = renderer.create(<Edit {...baseProps} />);
     const json = component.toJSON();
-    const fieldset = json.find((el) => el && el.type === 'fieldset');
+    const fieldset = json.find((el) => el?.type === 'fieldset');
     expect(fieldset).toBeDefined();
     expect(fieldset.props.className).toBe('divider-block');
-    const legend = fieldset.children.find((el) => el && el.type === 'legend');
+    const legend = fieldset?.children?.find((el) => el?.type === 'legend');
     expect(legend).toBeDefined();
     expect(legend.children).toContain('Divider');
   });
@@ -54,9 +54,9 @@ describe('Edit', () => {
       <Edit {...baseProps} data={{ title: 'Custom Title' }} />,
     );
     const json = component.toJSON();
-    const fieldset = json.find((el) => el && el.type === 'fieldset');
+    const fieldset = json.find((el) => el?.type === 'fieldset');
     expect(fieldset).toBeDefined();
-    const legend = fieldset.children.find((el) => el && el.type === 'legend');
+    const legend = fieldset?.children?.find((el) => el?.type === 'legend');
     expect(legend).toBeDefined();
     expect(legend.children).toContain('Custom Title');
   });
@@ -64,11 +64,11 @@ describe('Edit', () => {
   it('should pass the isEditMode prop to View', () => {
     const component = renderer.create(<Edit {...baseProps} />);
     const json = component.toJSON();
-    const fieldset = json.find((el) => el && el.type === 'fieldset');
+    const fieldset = json.find((el) => el?.type === 'fieldset');
     expect(fieldset).toBeDefined();
     expect(fieldset.props.className).toBe('divider-block');
     // The legend should contain default title
-    const legend = fieldset.children.find((el) => el && el.type === 'legend');
+    const legend = fieldset?.children?.find((el) => el?.type === 'legend');
     expect(legend).toBeDefined();
     expect(legend.children).toContain('Divider');
   });
@@ -77,8 +77,7 @@ describe('Edit', () => {
     const component = renderer.create(<Edit {...baseProps} selected={true} />);
     const json = component.toJSON();
     const portal = json.find(
-      (child) =>
-        child && child.type === 'div' && child.props.id === 'sidebar-portal',
+      (child) => child?.type === 'div' && child?.props?.id === 'sidebar-portal',
     );
     expect(portal).toBeDefined();
   });

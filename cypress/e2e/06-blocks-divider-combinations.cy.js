@@ -5,12 +5,22 @@ describe('Divider Block: Combinations Tests', () => {
   afterEach(slateAfterEach);
 
   const clickFirstSlate = () => {
-    cy.get('[contenteditable=true]').first().click();
+    cy.get('.slate-editor [contenteditable=true]').first().click();
+  };
+
+  const openBlockChooser = () => {
+    cy.get('body').then(($body) => {
+      if ($body.find('.block-add-button:visible').length > 0) {
+        cy.get('.block-add-button:visible').first().click();
+      } else {
+        cy.get('.block-add-button').first().click();
+      }
+    });
   };
 
   const addDividerBlock = () => {
     clickFirstSlate();
-    cy.get('.ui.basic.icon.button.block-add-button').first().click();
+    openBlockChooser();
     cy.get('.blocks-chooser .title').contains('Common').click();
     cy.get('.content.active.common .button.dividerBlock')
       .contains('Divider')
@@ -24,14 +34,15 @@ describe('Divider Block: Combinations Tests', () => {
     // Add first divider with text
     addDividerBlock();
     cy.get('fieldset.divider-block .divider').first().click({ force: true });
-    cy.get('.sidebar-container .field-wrapper-text input').first()
+    cy.get('.sidebar-container .field-wrapper-text input')
+      .first()
       .should('be.visible')
       .click()
       .type('First Divider');
 
     // Add second divider
     clickFirstSlate();
-    cy.get('.ui.basic.icon.button.block-add-button').first().click();
+    openBlockChooser();
     cy.get('.blocks-chooser .title').contains('Common').click();
     cy.get('.content.active.common .button.dividerBlock')
       .contains('Divider')
@@ -64,7 +75,7 @@ describe('Divider Block: Combinations Tests', () => {
     clickFirstSlate();
 
     // Use search box in block chooser
-    cy.get('.ui.basic.icon.button.block-add-button').first().click();
+    openBlockChooser();
     cy.get(".blocks-chooser .ui.form .field.searchbox input[type='text']")
       .should('be.visible')
       .type('divider');
@@ -75,7 +86,8 @@ describe('Divider Block: Combinations Tests', () => {
 
     cy.get('fieldset.divider-block .divider').first().click({ force: true });
 
-    cy.get('.sidebar-container .field-wrapper-text input').first()
+    cy.get('.sidebar-container .field-wrapper-text input')
+      .first()
       .click()
       .type('Searched Divider');
 
