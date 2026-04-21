@@ -4,8 +4,20 @@ describe('Divider Block: Combinations Tests', () => {
   beforeEach(slateBeforeEach);
   afterEach(slateAfterEach);
 
-  const clickFirstSlate = () => {
-    cy.get('.slate-editor [contenteditable=true]').first().click();
+  const focusBlockForInsertion = () => {
+    cy.get('body').then(($body) => {
+      if ($body.find('fieldset.divider-block .divider').length > 0) {
+        cy.get('fieldset.divider-block .divider')
+          .first()
+          .click({ force: true });
+      } else if (
+        $body.find('.slate-editor [contenteditable=true]').length > 0
+      ) {
+        cy.get('.slate-editor [contenteditable=true]').first().click();
+      } else {
+        cy.get('.block.inner.title [contenteditable=true]').first().click();
+      }
+    });
   };
 
   const openBlockChooser = () => {
@@ -19,7 +31,7 @@ describe('Divider Block: Combinations Tests', () => {
   };
 
   const addDividerBlock = () => {
-    clickFirstSlate();
+    focusBlockForInsertion();
     openBlockChooser();
     cy.get('.blocks-chooser .title').contains('Common').click();
     cy.get('.content.active.common .button.dividerBlock')
@@ -41,12 +53,7 @@ describe('Divider Block: Combinations Tests', () => {
       .type('First Divider');
 
     // Add second divider
-    clickFirstSlate();
-    openBlockChooser();
-    cy.get('.blocks-chooser .title').contains('Common').click();
-    cy.get('.content.active.common .button.dividerBlock')
-      .contains('Divider')
-      .click({ force: true });
+    addDividerBlock();
 
     cy.get('fieldset.divider-block').should('have.length', 2);
 
@@ -72,7 +79,7 @@ describe('Divider Block: Combinations Tests', () => {
     cy.clearSlateTitle();
     cy.getSlateTitle().type('Search Divider Test');
 
-    clickFirstSlate();
+    focusBlockForInsertion();
 
     // Use search box in block chooser
     openBlockChooser();
