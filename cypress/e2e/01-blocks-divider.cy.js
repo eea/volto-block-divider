@@ -20,8 +20,8 @@ describe('Blocks Tests', () => {
       .contains('Divider')
       .click({ force: true });
 
-    cy.get('.sidebar-container label[for="field-section"]').click();
-    cy.get('.sidebar-container label[for="field-short"]').click();
+    cy.get('.field-wrapper-section .ui.checkbox').click();
+    cy.get('.field-wrapper-short .ui.checkbox').click();
 
     // Save
     cy.get('#toolbar-save').click();

@@ -22,7 +22,8 @@ describe('Divider Block: Sidebar Fields', () => {
 
     cy.get('fieldset.divider-block .divider').first().click({ force: true });
 
-    cy.get('.field-wrapper-title #field-title')
+    // In Volto 17/18, the sidebar field may vary slightly; use a robust selector
+    cy.get('.field-wrapper-title input[id^="field-"]')
       .should('be.visible')
       .click()
       .type('My Divider Title');
@@ -44,7 +45,7 @@ describe('Divider Block: Sidebar Fields', () => {
 
     cy.get('fieldset.divider-block .divider').first().click({ force: true });
 
-    cy.get('.field-wrapper-text #field-text')
+    cy.get('.field-wrapper-text input[id^="field-"]')
       .should('be.visible')
       .click()
       .type('Divider Label');
@@ -125,9 +126,10 @@ describe('Divider Block: Sidebar Fields', () => {
     // Toggle hidden first because spacing is intended to be used with hidden
     cy.get('.field-wrapper-hidden .ui.checkbox').click();
 
-    cy.get('.field-wrapper-spacing .ui.dropdown').click();
-    cy.get('.field-wrapper-spacing .ui.dropdown .menu .item')
-      .contains('Medium')
+    // image_size widget renders S/M/L buttons
+    cy.get('.field-wrapper-spacing')
+      .find('button')
+      .contains('M')
       .click({ force: true });
 
     cy.get('fieldset.divider-block .divider').should('have.class', 'divider-spacing-m');
