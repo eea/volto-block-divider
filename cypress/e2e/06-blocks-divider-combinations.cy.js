@@ -4,34 +4,48 @@ describe('Divider Block: Combinations Tests', () => {
   beforeEach(slateBeforeEach);
   afterEach(slateAfterEach);
 
-  const focusBlockForInsertion = () => {
+  const addButtonSelector =
+    '.ui.basic.icon.button.block-add-button, button.block-add-button, .add-block-button';
+  const editableTextBlockSelector =
+    '.content-area .slate-editor [contenteditable=true], .content-area .public-DraftEditor-content[contenteditable=true], .content-area [data-contents=true][contenteditable=true]';
+
+  const ensureInsertionContext = () => {
     cy.get('body').then(($body) => {
-      if ($body.find('fieldset.divider-block .divider').length > 0) {
+      if ($body.find(`${addButtonSelector}:visible`).length > 0) {
+        return;
+      }
+
+      if ($body.find(editableTextBlockSelector).length > 0) {
+        cy.get(editableTextBlockSelector).first().click({ force: true });
+      } else if ($body.find('fieldset.divider-block .divider').length > 0) {
         cy.get('fieldset.divider-block .divider')
           .first()
           .click({ force: true });
       } else if (
-        $body.find('.slate-editor [contenteditable=true]').length > 0
+        $body.find('.block.inner.title [contenteditable=true]').length > 0
       ) {
-        cy.get('.slate-editor [contenteditable=true]').first().click();
-      } else {
         cy.get('.block.inner.title [contenteditable=true]').first().click();
       }
     });
   };
 
   const openBlockChooser = () => {
+    ensureInsertionContext();
     cy.get('body').then(($body) => {
-      if ($body.find('.block-add-button:visible').length > 0) {
-        cy.get('.block-add-button:visible').first().click();
+      if ($body.find(`${addButtonSelector}:visible`).length > 0) {
+        cy.get(`${addButtonSelector}:visible`).first().click({ force: true });
+      } else if ($body.find(addButtonSelector).length > 0) {
+        cy.get(addButtonSelector).first().click({ force: true });
       } else {
-        cy.get('.block-add-button').first().click();
+        cy.get(editableTextBlockSelector).first().click({ force: true });
+        cy.get(addButtonSelector, { timeout: 10000 })
+          .first()
+          .click({ force: true });
       }
     });
   };
 
   const addDividerBlock = () => {
-    focusBlockForInsertion();
     openBlockChooser();
     cy.get('.blocks-chooser .title').contains('Common').click();
     cy.get('.content.active.common .button.dividerBlock')
@@ -78,8 +92,6 @@ describe('Divider Block: Combinations Tests', () => {
   it('adds divider block using block chooser search', () => {
     cy.clearSlateTitle();
     cy.getSlateTitle().type('Search Divider Test');
-
-    focusBlockForInsertion();
 
     // Use search box in block chooser
     openBlockChooser();
