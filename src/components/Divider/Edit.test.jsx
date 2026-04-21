@@ -41,7 +41,12 @@ describe('Edit', () => {
   it('should render the component with default title message', () => {
     const component = renderer.create(<Edit {...baseProps} />);
     const json = component.toJSON();
-    expect(json).toMatchSnapshot();
+    const fieldset = json.find((el) => el && el.type === 'fieldset');
+    expect(fieldset).toBeDefined();
+    expect(fieldset.props.className).toBe('divider-block');
+    const legend = fieldset.children.find((el) => el && el.type === 'legend');
+    expect(legend).toBeDefined();
+    expect(legend.children).toContain('Divider');
   });
 
   it('should render the component with custom title', () => {
@@ -49,7 +54,11 @@ describe('Edit', () => {
       <Edit {...baseProps} data={{ title: 'Custom Title' }} />,
     );
     const json = component.toJSON();
-    expect(json).toMatchSnapshot();
+    const fieldset = json.find((el) => el && el.type === 'fieldset');
+    expect(fieldset).toBeDefined();
+    const legend = fieldset.children.find((el) => el && el.type === 'legend');
+    expect(legend).toBeDefined();
+    expect(legend.children).toContain('Custom Title');
   });
 
   it('should pass the isEditMode prop to View', () => {
