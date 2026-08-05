@@ -43,12 +43,12 @@ endif
 
 ##############################################################################
 # SETTINGS AND VARIABLE
-DIR=$(shell basename $$(pwd))
-NODE_MODULES?="../../../node_modules"
+DIR=$(shell basename "$$(pwd)")
+NODE_MODULES?="../../node_modules"
 PLONE_VERSION?=6
-VOLTO_VERSION?=18-yarn
-ADDON_PATH="${DIR}"
-ADDON_NAME="@eeacms/${ADDON_PATH}"
+VOLTO_VERSION?=19
+ADDON_PATH=${DIR}
+ADDON_NAME=@eeacms/${ADDON_PATH}
 DOCKER_COMPOSE=PLONE_VERSION=${PLONE_VERSION} VOLTO_VERSION=${VOLTO_VERSION} ADDON_NAME=${ADDON_NAME} ADDON_PATH=${ADDON_PATH} docker compose
 RAZZLE_INTERNAL_API_PATH?="http://localhost:8080/Plone"
 RAZZLE_DEV_PROXY_API_PATH?="${RAZZLE_INTERNAL_API_PATH}"
@@ -89,12 +89,12 @@ cypress-run:	## Run cypress integration tests
 	CYPRESS_API_PATH="${RAZZLE_DEV_PROXY_API_PATH}" NODE_ENV=development  $(NODE_MODULES)/cypress/bin/cypress run
 
 .PHONY: test
-test:			## Run jest tests
-	${DOCKER_COMPOSE} run --no-deps -e CI=1 frontend test
+test:			## Run unit tests
+	${DOCKER_COMPOSE} run --no-deps -e CI=1 frontend --dir /app --filter ${ADDON_NAME} run test --run
 
 .PHONY: test-update
-test-update:	## Update jest tests snapshots
-	${DOCKER_COMPOSE} run --no-deps -e CI=1 frontend test -u
+test-update:	## Update unit test snapshots
+	${DOCKER_COMPOSE} run --no-deps -e CI=1 frontend --dir /app --filter ${ADDON_NAME} run test --run --update
 
 .PHONY: stylelint
 stylelint:		## Stylelint
@@ -146,20 +146,18 @@ ci-fix:
 
 .PHONY: test-ci
 test-ci:
-	cd /app
-	RAZZLE_JEST_CONFIG=src/addons/${ADDON_PATH}/jest-addon.config.js CI=true yarn test src/addons/${ADDON_PATH}/src --watchAll=false --reporters=default --reporters=jest-junit --collectCoverage --coverageReporters lcov cobertura text
+	CI=true pnpm --dir /app --filter ${ADDON_NAME} run test --run --reporter=default --reporter=junit --outputFile.junit=/app/junit.xml --coverage
 
 .PHONY: start-ci
 start-ci:
 	cp .coverage.babel.config.js /app/babel.config.js
-	cd ../..
-	yarn start
+	pnpm --dir /app start
 
 .PHONY: check-ci
 check-ci:
-	$(NODE_MODULES)/.bin/wait-on -t 240000  http://localhost:3000
+	pnpm --dir /app --filter @plone/volto exec wait-on -t 240000 http://localhost:3000
 
 .PHONY: cypress-ci
 cypress-ci:
-	$(NODE_MODULES)/.bin/wait-on -t 240000  http://localhost:3000
+	pnpm --dir /app --filter @plone/volto exec wait-on -t 240000 http://localhost:3000
 	CYPRESS_API_PATH="${RAZZLE_DEV_PROXY_API_PATH}" NODE_ENV=development  $(NODE_MODULES)/cypress/bin/cypress run --browser chromium

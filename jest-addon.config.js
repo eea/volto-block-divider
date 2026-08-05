@@ -1,18 +1,18 @@
-require('dotenv').config({ path: __dirname + '/.env' })
+require('dotenv').config({ path: __dirname + '/.env' });
 
-const fs = require('fs')
-const path = require('path')
+const fs = require('fs');
+const path = require('path');
 
 const voltoSlatePath = fs.existsSync(
-  path.join(__dirname, '../../../node_modules/@plone/volto-slate/src'),
+  path.join(__dirname, '../../node_modules/@plone/volto-slate/src'),
 )
   ? '<rootDir>/node_modules/@plone/volto-slate/src'
-  : '<rootDir>/node_modules/@plone/volto/packages/volto-slate/src'
+  : '<rootDir>/node_modules/@plone/volto/packages/volto-slate/src';
 
 module.exports = {
-  testMatch: ['**/src/addons/**/?(*.)+(spec|test).[jt]s?(x)'],
+  testMatch: ['**/packages/**/?(*.)+(spec|test).[jt]s?(x)'],
   collectCoverageFrom: [
-    'src/addons/**/src/**/*.{js,jsx,ts,tsx}',
+    'packages/**/src/**/*.{js,jsx,ts,tsx}',
     '!src/**/*.d.ts',
   ],
   moduleNameMapper: {
@@ -22,9 +22,9 @@ module.exports = {
     '@plone/volto/(.*)$': '<rootDir>/node_modules/@plone/volto/src/$1',
     '@package/(.*)$': '<rootDir>/node_modules/@plone/volto/src/$1',
     '@root/(.*)$': '<rootDir>/node_modules/@plone/volto/src/$1',
-    '@plone/volto-quanta/(.*)$': '<rootDir>/src/addons/volto-quanta/src/$1',
-    '@eeacms/search/(.*)$': '<rootDir>/src/addons/volto-searchlib/searchlib/$1',
-    '@eeacms/search': '<rootDir>/src/addons/volto-searchlib/searchlib',
+    '@plone/volto-quanta/(.*)$': '<rootDir>/packages/volto-quanta/src/$1',
+    '@eeacms/search/(.*)$': '<rootDir>/packages/volto-searchlib/searchlib/$1',
+    '@eeacms/search': '<rootDir>/packages/volto-searchlib/searchlib',
     '@eeacms/(.*?)/(.*)$': '<rootDir>/node_modules/@eeacms/$1/src/$2',
     '@plone/volto-slate$': voltoSlatePath,
     '@plone/volto-slate/(.*)$': `${voltoSlatePath}/$1`,
@@ -55,4 +55,4 @@ module.exports = {
       '<rootDir>/node_modules/@eeacms/volto-block-divider/jest.setup.js',
     ],
   }),
-}
+};
