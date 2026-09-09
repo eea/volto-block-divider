@@ -8,14 +8,22 @@ Cypress.Commands.add('autologin', () => {
   let api_url, user, password;
   api_url = Cypress.env('API_PATH') || 'http://localhost:8080/Plone';
   user = 'admin';
+<<<<<<< HEAD
   password = 'admin'; // betterleaks:allow -- local Cypress test credential
+=======
+  password = 'admin'; //betterleaks:allow
+>>>>>>> origin/develop
 
   return cy
     .request({
       method: 'POST',
       url: `${api_url}/@login`,
       headers: { Accept: 'application/json' },
+<<<<<<< HEAD
       body: { login: user, password },
+=======
+      body: { login: user, password: password }, //betterleaks:allow
+>>>>>>> origin/develop
     })
     .then((response) => cy.setCookie('auth_token', response.body.token));
 });
