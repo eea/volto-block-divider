@@ -1,0 +1,7 @@
+{
+  "title": "Block Divider",
+  "frontend_addon_name": "volto-block-divider",
+  "description": "volto-block-divider: Volto add-on",
+  "volto_version": "19.3.0",
+  "__template__": "frontend_addon"
+}
