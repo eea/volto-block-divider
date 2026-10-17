@@ -8,22 +8,14 @@ Cypress.Commands.add('autologin', () => {
   let api_url, user, password;
   api_url = Cypress.env('API_PATH') || 'http://localhost:8080/Plone';
   user = 'admin';
-<<<<<<< HEAD
   password = 'admin'; // betterleaks:allow -- local Cypress test credential
-=======
-  password = 'admin'; //betterleaks:allow
->>>>>>> origin/develop
 
   return cy
     .request({
       method: 'POST',
       url: `${api_url}/@login`,
       headers: { Accept: 'application/json' },
-<<<<<<< HEAD
       body: { login: user, password },
-=======
-      body: { login: user, password: password }, //betterleaks:allow
->>>>>>> origin/develop
     })
     .then((response) => cy.setCookie('auth_token', response.body.token));
 });
@@ -132,7 +124,7 @@ Cypress.Commands.add(
         })
         .then(() => console.log(`${contentType} created`));
     }
-  }
+  },
 );
 
 // --- Add DX Content-Type ----------------------------------------------------------
@@ -225,7 +217,7 @@ Cypress.Commands.add('removeSlateJSONField', (type, name) => {
       body: {},
     })
     .then(() =>
-      console.log(`${name} SlateJSONField field removed from ${type}`)
+      console.log(`${name} SlateJSONField field removed from ${type}`),
     );
 });
 
@@ -259,7 +251,7 @@ Cypress.Commands.add('typeInSlate', { prevSubject: true }, (subject, text) => {
           new InputEvent('beforeinput', {
             inputType: 'insertText',
             data: text,
-          })
+          }),
         );
         return subject;
       })
@@ -275,7 +267,7 @@ Cypress.Commands.add('lineBreakInSlate', { prevSubject: true }, (subject) => {
       .wrap(subject)
       .then((subject) => {
         subject[0].dispatchEvent(
-          new InputEvent('beforeinput', { inputType: 'insertLineBreak' })
+          new InputEvent('beforeinput', { inputType: 'insertLineBreak' }),
         );
         return subject;
       })
@@ -323,7 +315,7 @@ Cypress.Commands.add(
         include_children: include_children,
       },
     });
-  }
+  },
 );
 
 // --- waitForResourceToLoad ----------------------------------------------------------
@@ -383,7 +375,7 @@ Cypress.Commands.add(
         setBaseAndExtent(anchorNode, anchorOffset, focusNode, focusOffset);
       }
     });
-  }
+  },
 );
 
 Cypress.Commands.add('getSlate', (createNewSlate = false) => {
@@ -398,7 +390,7 @@ Cypress.Commands.add('getSlate', (createNewSlate = false) => {
     },
     () => {
       slate = cy.get(SLATE_SELECTOR, { timeout: 10000 }).last();
-    }
+    },
   );
   return slate;
 });
@@ -474,7 +466,7 @@ Cypress.Commands.add(
     });
     // Depending on what you're testing, you may need to chain a `.click()` here to ensure
     // further commands are picked up by whatever you're testing (this was required for Slate, for example).
-  }
+  },
 );
 
 Cypress.Commands.add(
@@ -482,7 +474,7 @@ Cypress.Commands.add(
   { prevSubject: true },
   (subject, query) => {
     cy.wrap(subject).setCursor(query, true);
-  }
+  },
 );
 
 Cypress.Commands.add(
@@ -490,7 +482,7 @@ Cypress.Commands.add(
   { prevSubject: true },
   (subject, query) => {
     cy.wrap(subject).setCursor(query);
-  }
+  },
 );
 
 // Helper functions
@@ -536,5 +528,5 @@ Cypress.Commands.add(
         failAction();
       }
     });
-  }
+  },
 );
