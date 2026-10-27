@@ -40,7 +40,6 @@
     "lint-staged": "^14.0.1",
     "md5": "^2.3.0",
     "postcss-less": "6.0.0",
-    "razzle-plugin-scss": "4.2.18",
     "react-test-renderer": "18.2.0",
     "vitest": "3.2.7",
     "@plone/registry": "workspace:*",
