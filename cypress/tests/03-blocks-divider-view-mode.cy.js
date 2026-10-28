@@ -65,6 +65,9 @@ describe('Divider Block: View Mode Tests', () => {
       .and('contain', 'Initial Divider Text');
 
     cy.visit('/cypress/my-page/edit');
+    // The edit toolbar only renders once the client has hydrated the page;
+    // a click on the server-rendered markup before that selects nothing.
+    cy.get('#toolbar-save').should('be.visible');
     cy.get('fieldset.divider-block .divider').first().click({ force: true });
     cy.get('.field-wrapper-text #field-text')
       .clear()
