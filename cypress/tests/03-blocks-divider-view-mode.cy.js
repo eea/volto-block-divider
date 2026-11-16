@@ -64,11 +64,16 @@ describe('Divider Block: View Mode Tests', () => {
       .should('have.class', 'horizontal')
       .and('contain', 'Initial Divider Text');
 
-    cy.visit('/cypress/my-page/edit');
-    // The edit toolbar only renders once the client has hydrated the page;
-    // a click on the server-rendered markup before that selects nothing.
+    // Open the edit form with client-side navigation, as an editor does from
+    // the toolbar. Loading /edit directly races the hydration on Volto 18:
+    // the click that should select the divider is lost and its sidebar form
+    // never shows up.
+    cy.navigate('/cypress/my-page/edit');
     cy.get('#toolbar-save').should('be.visible');
-    cy.get('fieldset.divider-block .divider').first().click({ force: true });
+    // Select the block through its wrapper and wait until Volto marks it as
+    // selected, so the sidebar renders the divider form.
+    cy.get('.block.dividerBlock').first().click({ force: true });
+    cy.get('.block.dividerBlock.selected').should('exist');
     cy.get('.field-wrapper-text #field-text')
       .clear()
       .type('Updated Divider Text');
