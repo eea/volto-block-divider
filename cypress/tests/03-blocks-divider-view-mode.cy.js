@@ -70,10 +70,11 @@ describe('Divider Block: View Mode Tests', () => {
     // never shows up.
     cy.navigate('/cypress/my-page/edit');
     cy.get('#toolbar-save').should('be.visible');
-    // Select the block through its wrapper and wait until Volto marks it as
-    // selected, so the sidebar renders the divider form.
-    cy.get('.block.dividerBlock').first().click({ force: true });
-    cy.get('.block.dividerBlock.selected').should('exist');
+    // Select the divider and wait until Volto marks its block as selected, so
+    // the sidebar renders the divider form. `.block.dividerBlock` also matches
+    // the drag wrapper around the block, which does not handle clicks.
+    cy.get('fieldset.divider-block .divider').first().click({ force: true });
+    cy.get('.block.dividerBlock[role="presentation"].selected').should('exist');
     cy.get('.field-wrapper-text #field-text')
       .clear()
       .type('Updated Divider Text');
