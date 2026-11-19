@@ -33,13 +33,13 @@ Release-it is a tool that automates 4 important steps in the release process:
 To configure the authentification, you need to export GITHUB_TOKEN for [GitHub](https://github.com/settings/tokens)
 
    ```
-   export GITHUB_TOKEN=XXX-XXXXXXXXXXXXXXXXXXXXXX
+   export GITHUB_TOKEN="$YOUR_GITHUB_TOKEN"
    ```
 
  To configure npm, you can use the `npm login` command or use a configuration file with a TOKEN :
 
    ```
-   echo "//registry.npmjs.org/:_authToken=YYYYYYYYYYYYYYYYYYYYYYYYYYYYYY" > .npmrc
+   echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > .npmrc
    ```
 
 #### Using release-it tool
@@ -71,4 +71,3 @@ Generic command, does not automatically add the `beta` to version, but you can s
 > Do not use release-it tool on master branch, the commit on CHANGELOG.md file and the version increase in the package.json file can't be done without a PULL REQUEST.
 
 > Do not keep Pull Requests from develop to master branches open when you are doing beta releases from the develop branch. As long as a PR to master is open, an automatic script will run on every commit and will update both the version and the changelog to a production-ready state - ( MAJOR.MINOR.PATCH mandatory format for version).
-
