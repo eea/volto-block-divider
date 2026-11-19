@@ -12,6 +12,18 @@
 
 ## Upgrade
 
+### Upgrading to 9.x
+
+> This version requires `Volto 18` or `Volto 19` and Node.js 22.
+
+The block, its schema and the color picker keep the same API, so upgrading from 8.x on Volto 18 needs no code changes. The release adds Volto 19 support and moves the repository to the Volto 19 layout, where the published package lives in `packages/volto-block-divider`.
+
+#### Breaking changes
+
+- **Volto 17 is dropped.** The package declares `@plone/volto >=18.0.0 <20.0.0`; stay on 8.x if the project runs Volto 17.
+- **Node.js 22 or newer is required** (`engines.node >= 22`), 8.x declared no engine.
+- **Peer dependencies are declared** (`react`, `react-dom`, `react-intl`, `classnames`, `semantic-ui-react`), so a project with different major versions gets an install warning instead of installing silently.
+
 ### Upgrading to 5.x
 
 This version requires: `@plone/volto >= 16.0.0.alpha.46` (schemaEnhancer / addStyling).
